@@ -1,12 +1,16 @@
-﻿namespace Sample0416
+﻿using System.Runtime.InteropServices;
+
+namespace Sample0416
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 10; i++)
+            int i = 0;
+            while (10>i)
             {
                 Console.WriteLine("Hello, World!");
+                i++;
             }
         }
     }
