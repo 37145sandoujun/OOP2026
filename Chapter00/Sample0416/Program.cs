@@ -9,7 +9,7 @@ namespace Sample0416
             int i = 0;
             while (10>i)
             {
-                Console.WriteLine("Hello, World!");
+                Console.WriteLine(i+"回繰り返した");
                 i++;
             }
         }
