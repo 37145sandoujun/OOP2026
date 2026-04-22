@@ -9,24 +9,30 @@ namespace DistanceConverter
 
         static void Main(string[] args)
         {
+            if (int.TryParse(Feet, out var Meter)) {
+                {
+                    if (args.Length >= 1 && args[0] == "-tom")
+                    {
 
-            if (args.Length >= 1 && args[0] == "-tom")
-            {
+                        PrintFeetToMeterList(1, 10);
+                    }//メートルへの変換
+                    else if (args.Length >= 1 && args[0] == "-tof")
+                    {
+                        if (int.TryParse(Meter, out var feet))
+                        {
+                            PrintMeterToFeetList(5, 15);//メートルからフィートへの変換
+                        }
 
-                PrintFeetToMeterList(10, 30);
-            }//メートルへの変換
-            else if (args.Length >= 1 && args[0] == "-tof")
-            {
-                PrintMeterToFeetList(5, 15);//メートルからフィートへの変換
+
+                        else
+                        {
+                            Console.WriteLine("因数エラー");
+
+                        }
+                    }
+                }
             }
-
-
-            else
-            {
-                Console.WriteLine("因数エラー");
-
-            }
-        }
+        
         
 
 private static void PrintMeterToFeetList(int start, int stop)
