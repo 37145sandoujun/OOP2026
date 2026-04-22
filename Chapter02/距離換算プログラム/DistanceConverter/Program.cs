@@ -13,11 +13,11 @@ namespace DistanceConverter
             if (args.Length >= 1 && args[0] == "-tom")
             {
 
-                PrintFeetToMeterList(1, 10);
+                PrintFeetToMeterList(10, 30);
             }//メートルへの変換
             else if (args.Length >= 1 && args[0] == "-tof")
             {
-                PrintMeterToFeetList(1, 10);//メートルからフィートへの変換
+                PrintMeterToFeetList(5, 15);//メートルからフィートへの変換
             }
 
 
