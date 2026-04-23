@@ -35,9 +35,10 @@ namespace DistanceConverter
 
         private static void PrintMeterToFeetList(int start, int stop)
         {
+            FeetConverter comverter=new FeetConverter();
             for (int meter = start; meter <= stop; meter++)
             {
-                double feet = MeterToFeet(meter);
+                double feet =FeetConverter.ToFeet(meter);
                 Console.WriteLine($"{meter}m={feet:0.0000}ft");
             }
 
@@ -45,9 +46,10 @@ namespace DistanceConverter
 
         private static void PrintFeetToMeterList(int start, int stop)
         {
+            FeetConverter comverter = new FeetConverter();
             for (int feet = start; feet <= stop; feet++)
             {
-                double meter = FeetToMeter(feet);
+                double meter =FeetConverter.FromMeter(feet);
                 Console.WriteLine($"{feet}ft={meter:0.0000}m");
 
             }
