@@ -9,14 +9,14 @@ namespace SalesCalculator
 {//売上集計プログラムクラス
     public class SalesCounter
     {
-        private readonly List<Sale> _sales;
+        private readonly IEnumerable<Sale> _sales;
 
         //コンストラクター
         public SalesCounter(string filePath)
         {
             _sales = ReadSales(filePath);
         }
-        public　 List<Sale> ReadSales(string filePath)
+        public　IEnumerable<Sale> ReadSales(string filePath)
         {
             List<Sale> Sales = new List<Sale>();
             String[] lines = File.ReadAllLines(filePath);
@@ -37,9 +37,9 @@ namespace SalesCalculator
             return Sales;
         }
         //店舗別売り上げを求める
-        public Dictionary<string, int> GetPerStoreSales()
+        public IDictionary<string, int> GetPerStoreSales()
         {
-            Dictionary<string, int> dict = new Dictionary<string, int>();
+             var dict = new SortedDictionary<string, int>();
 
             foreach(var sale in _sales){
                 //すでに名前が辞書のキーに登録されているか？
