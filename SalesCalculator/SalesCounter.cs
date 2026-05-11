@@ -18,14 +18,12 @@ namespace SalesCalculator
         }
         public　IEnumerable<Sale> ReadSales(string filePath)
         {
-            List<Sale> Sales = new List<Sale>();
-            String[] lines = File.ReadAllLines(filePath);
-
-
-            foreach (string line in lines)
+            var Sales = new List<Sale>();
+            var lines = File.ReadAllLines(filePath);
+            foreach (var line in lines)
             {
-                string[] items = line.Split(',');
-                Sale sale = new Sale()
+                var items = line.Split(',');
+                var sale = new Sale()
                 {
                     ShopName = items[0],
                     ProductCategory = items[1],
