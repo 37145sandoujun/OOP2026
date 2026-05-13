@@ -6,17 +6,18 @@
         {
             PrintInchMeterList(1, 10);
         }
-         private static void PrintInchMeterList(int start, int end){
+        private static void PrintInchMeterList(int start, int end) {
 
-        }
 
-        private static void PrintMeterToFeetList(int start, int stop)
-        {
-            FeetConverter comverter = new FeetConverter();
-            for (int meter = start; meter <= stop; meter++)
+        
+
+       
+        
+            
+            for (int feet = start; feet <= stop; feet++)
             {
-                double feet = FeetConverter.ToFeet(meter);
-                Console.WriteLine($"{meter}m={feet:0.0000}ft");
+                double meter = InchConverter.ToMeter(feet);
+                Console.WriteLine($"{feet}inch={meter:0.0000}m");
             }
 
         }

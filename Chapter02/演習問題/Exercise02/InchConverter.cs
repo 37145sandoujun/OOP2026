@@ -10,10 +10,18 @@ namespace Exercise02
     {
         private static readonly double ratio = 0.0254;//定数
 
+       
+
         //メートルからインチを求める
-        public static double Tometle(double meter)
+        public static double FromMeter(double meter)
         {
             return meter / ratio;
+        }
+
+        //インチからメートルを求める
+        public static double Tometle(double inch)
+        {
+            return inch * ratio;
         }
     }
 }
