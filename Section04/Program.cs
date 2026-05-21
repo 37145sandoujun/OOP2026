@@ -1,9 +1,9 @@
-﻿namespace Section01
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Section04
 {
     internal class Program
     {
-
-        public delegate bool Judgement(int value);
         static void Main(string[] args)
         {
             var cities = new List<string> {
@@ -17,15 +17,16 @@
                 "Hong Kong",
             };
 
-            IEnumerable<string> query = cities.Where(s => s.Length <= 5)
-                .Select(s=> s.ToLower());
-            foreach(string s in query)
+            var query = cities.Where(s => s.Length<=5).ToList();
+            foreach (var item in query)
             {
-                Console.WriteLine(s);
+                Console.WriteLine(item);
             }
-           
-
-
+            cities[0] = "Osaka";
+            foreach(var item in query)
+            {
+                Console.WriteLine(item);
+            }
         }
-    }
+        }
 }
