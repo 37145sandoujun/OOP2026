@@ -16,16 +16,28 @@ namespace Exercise01
 
        
     
-    public YearMonth(int Year, int Month, int Is21Century)
+    public YearMonth(int Year, int Month)
         {
             Year = Year;
-            Month = Month;
-            Is21Century = Is21Century;
+            Month =Month;
+           
         }
 
-        public YearMonth AddOneMonth(int Year, int Month)
-        {
+        public bool Is21Century => 2001 <= Year && Year <= 2100;
+        
+            
 
+        public YearMonth AddOneMonth()
+        {
+            if (Month == 12)
+            {
+                return new YearMonth(Year + 1, Month);
+            }
+            else
+            {
+                return new YearMonth(Year ,Month);
+            }
+            
         }
     }
 }

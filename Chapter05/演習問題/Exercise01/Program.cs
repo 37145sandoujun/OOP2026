@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var obj = new YearMonth(2020, 5);
+            Console.WriteLine(obj);
         }
     }
 }
