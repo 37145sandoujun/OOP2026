@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise01
 {
-    internal class YearMonth
+    public class YearMonth
     {
         public int Year { get; init; }
         public int Month { get; init; }

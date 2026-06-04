@@ -1,4 +1,7 @@
-﻿namespace Exercise02
+﻿using Exercise01;
+using System.ComponentModel.Design;
+
+namespace Exercise02
 {
     internal class Program
     {
@@ -26,19 +29,47 @@
 
         private static void Exercise2(YearMonth[] ymCollection)
         {
-
+            foreach(var ym in ymCollection)
+            {
+                Console.WriteLine(ym);
+            }
         }
 
+        private static YearMonth? FindFirst21C(YearMonth[] ymCollection)
+        {
+            foreach (var ym in ymCollection)
+            {
+                if (ym. Is21Century)
+                {
+                    return ym;
+                }
+                
+            }
+            return null;
+        }
+        private static void Exercise3(YearMonth[] ymCollection)
+        {
+            Console.WriteLine(FindFirst21C(ymCollection));
+        }
         private static void Exercise4(YearMonth[] ymCollection)
         {
-
+            var ym= FindFirst21C(ymCollection);
+            if (ym is not null) {
+                Console.WriteLine("２１世紀のデータはありません");
+            } else {
+                Console.WriteLine();
+            }
         }
-
+        
         private static void Exercise5(YearMonth[] ymCollection)
         {
+            var array = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
+            Exercise2(array);
+           
 
         }
+        
     }
-}
     }
-}
+
+   
