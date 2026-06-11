@@ -80,7 +80,23 @@ namespace Exercise03 {
             {
                 Console.WriteLine(word.Key+":"+word.Value);
             }
-            
+            //配列も求めた集計
+            var array=Enumerable.Repeat(0,26).ToArray();
+            foreach(var alph in str)
+            {
+                array[alph - 'a']++;
+
+            }
+            for (char ch ='a'; ch <= 'z'; ch++)
+            {
+                Console.WriteLine($"{ ch}:{array[ch-'a']}");
+            }
+
+
+                foreach (var num in array)
+                {
+                    Console.WriteLine(num);
+                }
         }
     }
 }
