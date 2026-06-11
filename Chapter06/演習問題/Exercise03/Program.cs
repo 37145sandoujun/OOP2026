@@ -1,4 +1,6 @@
 ﻿
+using System.Reflection.Metadata;
+
 namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
@@ -60,8 +62,25 @@ namespace Exercise03 {
         //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
             //辞書を使った集計
-            var str = text.ToLower
+            var str = text.ToLower().Replace("", "");
+            var alphdicCount = Enumerable.Range('a', 26).
+                ToDictionary(num => ((char)num), num => 0);
+               // var dict = new SortedDictionary<char, int>();
+            foreach(var c in str)
+            {
+                alphdicCount[c]++;
 
+                foreach (var word in alphdicCount)
+                {
+                    Console.WriteLine(word.Key+":"+word.Value);
+                }
+
+            }
+            foreach(var word in alphdicCount)
+            {
+                Console.WriteLine(word.Key+":"+word.Value);
+            }
+            
         }
     }
 }
