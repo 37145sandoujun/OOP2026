@@ -48,6 +48,13 @@ namespace Exercise03 {
             var teki =  text.Split(' ');
             var sub = new  StringBuilder();
             foreach (var word in teki)
+
+
+            //for (int i =0; i<array.Length;i++)
+            //sb.Appnd(" ")
+            //sb.Appnd(array)
+            //
+
             {
                 if (sub.Length > 0)
                 {
