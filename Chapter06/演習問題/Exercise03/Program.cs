@@ -1,5 +1,6 @@
 ﻿
 using System.Reflection.Metadata;
+using System.Text;
 
 namespace Exercise03 {
     internal class Program {
@@ -44,7 +45,20 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            //やらなくてよい
+            var teki =  text.Split(' ');
+            var sub = new  StringBuilder();
+            foreach (var word in teki)
+            {
+                if (sub.Length > 0)
+                {
+                    sub.Append(" ");
+
+                }
+                sub.Append(word);
+            }
+            Console.WriteLine(sub+".");
+           
+
         }
 
         private static void Exercise4(string text) {
@@ -61,47 +75,40 @@ namespace Exercise03 {
 
         //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
-            //辞書を使った集計
-            var str = text.ToLower().Replace("", "");
-            var alphdicCount = Enumerable.Range('a', 26).
-                ToDictionary(num => ((char)num), num => 0);
-               // var dict = new SortedDictionary<char, int>();
-            foreach(var c in str)
-            {
-                alphdicCount[c]++;
+            var str = text.ToLower().Replace(" ", "");
+            //ディクショナリーを使った集計
+            var alphDicCount = Enumerable.Range('a', 26).
+            ToDictionary(num => ((char)num), num => 0);
 
-                foreach (var word in alphdicCount)
-                {
-                    Console.WriteLine(word.Key+":"+word.Value);
-                }
+            // var dict = new SortedDictionary<char,int>();
 
-            }
-            foreach(var word in alphdicCount)
+            foreach (var c in str)
             {
-                Console.WriteLine(word.Key+":"+word.Value);
+                alphDicCount[c]++;
             }
-            //配列も求めた集計
-            var array=Enumerable.Repeat(0,26).ToArray();
-            foreach(var alph in str)
+
+
+            foreach (var word in alphDicCount)
+            {
+                Console.WriteLine(word.Key + ":" + word.Value);
+            }
+
+            Console.WriteLine();  //改行
+            //配列を用いた集計
+            var array = Enumerable.Repeat(0, 26).ToArray();
+            foreach (var alph in str)
             {
                 array[alph - 'a']++;
-
             }
-            for (char ch ='a'; ch <= 'z'; ch++)
-            {
-                Console.WriteLine($"{ ch}:{array[ch-'a']}");
-            }
-
-            //'a'から順にカウントして集計
             for (char ch = 'a'; ch <= 'z'; ch++)
             {
-                Console.WriteLine($"{ch}:{str.Count(a=>a==ch)}");
+                Console.WriteLine($"{ch}:{array[ch - 'a']}");
             }
 
             foreach (var num in array)
-                {
-                    Console.WriteLine(num);
-                }
+            {
+                Console.WriteLine(num);
+            }
         }
     }
 }

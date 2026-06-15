@@ -7,11 +7,10 @@ namespace Section05
     {
         static void Main(string[] args)
         {
-            var sb = new[] { "Orange", "Lemon", "Strawberry" };
-            var sep = ',';
-            
 
-                var result = String.Join(",", GetWords());
+            var sb = new StringBuilder();
+
+            var result = String.Join(",", GetWords());
             Console.WriteLine(result);
                
             
