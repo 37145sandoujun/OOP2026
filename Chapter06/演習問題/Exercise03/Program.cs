@@ -92,8 +92,13 @@ namespace Exercise03 {
                 Console.WriteLine($"{ ch}:{array[ch-'a']}");
             }
 
+            //'a'から順にカウントして集計
+            for (char ch = 'a'; ch <= 'z'; ch++)
+            {
+                Console.WriteLine($"{ch}:{str.Count(a=>a==ch)}");
+            }
 
-                foreach (var num in array)
+            foreach (var num in array)
                 {
                     Console.WriteLine(num);
                 }
