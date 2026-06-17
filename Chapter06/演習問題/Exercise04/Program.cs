@@ -5,20 +5,11 @@ namespace Exercise04 {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
-            var array = line.Split(new[] { '=', ';' },StringSplitOptions.RemoveEmptyEntries  );
-            int Count = 0;
-            foreach(var lines in array)
+            
+            foreach(var item in line.Split(';'))
             {
-                Count++;
-                if(Count %2 == 0)
-                {
-                    Console.WriteLine(lines);
-                }
-                else
-                {
-                    Console.Write($"{ToJapanese(lines)}:");
-                }
-              
+                var word = item.Split('=');
+                Console.WriteLine($"{ToJapanese(word[0])}:{word[1]}");
             }
 
         }
