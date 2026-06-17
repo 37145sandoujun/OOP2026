@@ -1,11 +1,25 @@
-﻿namespace Exercise04 {
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Exercise04 {
     internal class Program {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
 
-
-
-
+            var array = line.Split(new[] { '=', ';' },StringSplitOptions.RemoveEmptyEntries  );
+            int Count = 0;
+            foreach(var lines in array)
+            {
+                Count++;
+                if(Count %2 == 0)
+                {
+                    Console.WriteLine(lines);
+                }
+                else
+                {
+                    Console.Write($"{ToJapanese(lines)}:");
+                }
+              
+            }
 
         }
         static string ToJapanese(string key) {
