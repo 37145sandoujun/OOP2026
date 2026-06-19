@@ -32,41 +32,48 @@ namespace Exercise01
 
         private static void Exercise2(int[] numbers)
         {
-            var length = numbers.TakeLast(2);
-            foreach (var item in length)
-                Console.WriteLine(item);
+            //var length = numbers.TakeLast(2);
+            //foreach (var item in length)
+            //    Console.WriteLine(item);
+            foreach(var n in numbers.TakeLast(2))
             {
-
+                Console.WriteLine(strings);
             }
+
         }
+       
 
 
         private static void Exercise3(int[] numbers)
         {
-            var str = numbers.Select(x => x.ToString("000"));
-            foreach (var item in str)
+            //var str = numbers.Select(x => x.ToString("000"));
+            //foreach (var item in str)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            var strings =numbers.Select(n => n.ToString("000"));
+            foreach(var s in strings)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(s);
             }
-            
-
             
         }
 
         private static void Exercise4(int[] numbers)
         {
-            var result = numbers.OrderBy(X=>X).Take(3);
-            foreach (var item in result)
+
+            foreach (var n in numbers.Order().Take(3))
             {
-                Console.WriteLine(item);
+                Console.WriteLine(n);
             }
         }
 
         private static void Exercise5(int[] numbers)
         {
-            var dis = numbers.Distinct().Count(X => X > 10);
-            Console.WriteLine(dis);
-
+            //var dis = numbers.Distinct().Count(X => X > 10);
+            //Console.WriteLine(dis);
+            var count = numbers.Distinct().Count(n => n < 10);
+            Console.WriteLine(count);
             
 
         }
