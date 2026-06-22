@@ -7,30 +7,38 @@
             _score = ReadScore(filePath);
         }
 
-        //メソッドの概要：
+        //メソッドの概要：,で区切る
         private static IEnumerable<Student> ReadScore(string filePath) {
             var sales = new List<Student>();
             var lines = File.ReadAllLines(filePath);
-            
+            foreach (var line in lines)
+            {
+                var items = line.Split(',');
+                var sale = new Student()
+                {
+                    Name = items[0],
+                    Subject = items[1],
+                    Score = int.Parse(items[2]),
+                };
 
-
-
-
-
-
-
+                sales.Add(sale);
+            }
             return sales;
         }
 
-        //メソッドの概要：
+        //メソッドの概要：店舗別売り上げを求める
         public IDictionary<string, int> GetPerStudentScore() {
             var dict = new Dictionary<string, int>();
-
-
-
-
-
-
+            foreach (var sale in _score)
+            {
+                //すでに名前が辞書のキーに登録されているか？
+                if (dict.ContainsKey(sale.Name))
+                    //登録されている場合
+                    dict[sale.Name] += sale.Score;//売上の足しこみ
+                else
+                    //未登録の場合
+                    dict[sale.Name] = sale.Score;//新規に売り上げを登録
+            }
             return dict;
         }
     }
