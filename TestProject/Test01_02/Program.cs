@@ -112,6 +112,7 @@
                 Console.WriteLine(item);
             }
 
+
         }
 
         //問題６　全都市数
