@@ -54,19 +54,36 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(List<Book> books) {
-            var first=books.Find(x=>x.Price)
+            var book = books.FirstOrDefault(x=>x.Price>=4000);
+            if(book is not null)
+            {
+                Console.WriteLine(book.Title);
+            }
+;
         }
 
         private static void Exercise5(List<Book> books) {
+            var max = books.Where(x => x.Price <= 4000).Max(x => x.Pages);
             
+            Console.WriteLine(max);
         }
 
         private static void Exercise6(List<Book> books) {
+            var max = books.Where(x => x.Pages <= 400).OrderByDescending(n => n.Pages);
+            foreach(var item in max)
+            {
+                Console.WriteLine(item.Title);
+                Console.WriteLine(item.Price);
+            }
             
         }
 
         private static void Exercise7(List<Book> books) {
-            
+            var selectd = books.Where(x => x.Title.Contains("C#") && x.Pages <= 500).Select(x => x.Title);
+            foreach(var item in selectd)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
