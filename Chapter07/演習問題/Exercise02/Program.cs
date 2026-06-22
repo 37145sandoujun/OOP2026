@@ -49,7 +49,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise3(List<Book> books) {
-            var result = books.Where(x => x.Title.Contains("C#")).Average(n=>n.Pages);
+            var result = books.Where(x => x.Title.Contains("C#")).Average(n => n.Pages);
             Console.WriteLine("平均：" + result);
         }
 
