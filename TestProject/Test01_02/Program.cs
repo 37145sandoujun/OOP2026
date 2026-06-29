@@ -95,7 +95,7 @@
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(int[] numbers)
         {
-            var query = numbers.Where(t => t >= 50 && t <= 10);
+            var query = numbers.Where(t => t <= 50 && t >= 10);
             foreach (var item in query)
             {
                 Console.WriteLine(item);
