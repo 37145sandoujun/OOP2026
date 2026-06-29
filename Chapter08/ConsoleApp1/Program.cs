@@ -27,48 +27,79 @@ namespace ConsoleApp1
                 //県庁所在地の入力
                 Console.WriteLine("県庁所在地");
                 prefCaptalLocation = Console.ReadLine();
-                if (prefCaptalLocation == null) break;
 
+                if (prefOfficeDict.ContainsKey(pref))
+                {
+                    Console.WriteLine("上書きしますか?(y/n)");
+                    if (Console.ReadLine() == "n") continue;
+                }
 
-                prefOfficeDict.Add(pref, prefCaptalLocation);
+                prefOfficeDict[pref] = prefCaptalLocation;
+                Console.WriteLine();
             }
+
+            Boolean endFlag = false;
+            while (endflag)
+            {
+                switch (menuDisp())
+                {
+            case1:
+                allDisp();
+                break;
+            case2:
+                serchPrefCaptalLocation();
+                break;
+
+                default:
+                    endFlag = true;
+                break;
+            }
+
+
+
+        }
+
+
+
+
+
+        }
             //メニュー表示
-            private static void manue()//メニュー表示
+            private static void manuDisp()//メニュー表示
         {
-            Console.WriteLine("****menue****");
+            Console.WriteLine("\n****menue****");
             Console.WriteLine("1,一覧表示");
             Console.WriteLine("2,検索");
             Console.WriteLine("9,終了");
-            int num = int.Parse(Console.ReadLine());
-            if (num == 1)
-            {
-                allDisp();
-            } else if (num == 2)
-            {
-                serchPrefCaptalLocation();
-            } if (num == 9) break;
+            Console.Write(">");
 
+             
+            )
+           // return int.Parse(Console.ReadLine());
         
         }
 
-           
 
 
-private static void allDisp()
+
+        private static void allDisp()
         {
             Console.WriteLine("一覧表示");
-            foreach (var item in prefOfficeDict)
+            foreach (var p in prefOfficeDict)
             {
-                if (item.Key == Console.ReadLine())
-                {
-                    Console.WriteLine($"{item.Key}県は{item.Value}");
-                }
+                Console.WriteLine($"{p.Key}県の県庁所在地は{p.Value}");
+
             }
         }
         private static void serchPrefCaptalLocation()//検索表示
         {
             Console.WriteLine("都道府県");
-            String? serchPref = Console.ReadLine();
+            var serchPref = Console.ReadLine();
+            if (serchPref is null) return;
+            if (prefOfficeDict.ContainsKey(serchPref))
+            {
+                Console.WriteLine(serchPref + "の県庁所在地は" + prefOfficeDict[serchPref] + "です");
+            }
         }
     }
 }
