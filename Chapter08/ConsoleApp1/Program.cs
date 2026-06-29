@@ -36,36 +36,42 @@ namespace ConsoleApp1
 
                 prefOfficeDict[pref] = prefCaptalLocation;
                 Console.WriteLine();
+
+
             }
 
-            Boolean endFlag = false;
-            while (endflag)
+            Boolean endFlag = false;    //終了フラグ（メニューの無限ループを抜ける用）
+            while (!endFlag)
             {
                 switch (menuDisp())
                 {
-            case1:
-                allDisp();
-                break;
-            case2:
-                serchPrefCaptalLocation();
-                break;
+                    case 1: //一覧出力処理
+                        allDisp();
+                        break;
 
-                default:
-                    endFlag = true;
-                break;
+                    case 2:
+                        searchPrefCaptalLocation();
+                        break;
+
+                    default:
+                        endFlag = true;
+                        break;
+                }
             }
-
-
-
         }
 
 
 
 
 
-        }
-            //メニュー表示
-            private static void manuDisp()//メニュー表示
+
+
+
+
+
+
+        //メニュー表示
+        private static void menuDisp()//メニュー表示
         {
             Console.WriteLine("\n****menue****");
             Console.WriteLine("1,一覧表示");
@@ -74,7 +80,7 @@ namespace ConsoleApp1
             Console.Write(">");
 
              
-            )
+            
            // return int.Parse(Console.ReadLine());
         
         }
@@ -91,7 +97,7 @@ namespace ConsoleApp1
 
             }
         }
-        private static void serchPrefCaptalLocation()//検索表示
+        private static void searchPrefCaptalLocation()//検索表示
         {
             Console.WriteLine("都道府県");
             var serchPref = Console.ReadLine();
