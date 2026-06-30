@@ -16,8 +16,15 @@ namespace Exercise01
 
             
         }
-        private static void Exercise01()
+        private static void Exercise01(string text)
         {
+            var dict = new Dictionary<char, int>();
+            
+                foreach (var i in text)
+            {if()
+
+            }
+            
 
         }
         private static void Exercise02()
