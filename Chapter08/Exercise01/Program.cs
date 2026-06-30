@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 
 namespace Exercise01
@@ -20,9 +21,23 @@ namespace Exercise01
         {
             var dict = new Dictionary<char, int>();
             
-                foreach (var i in text)
-            {if()
+                foreach (var ch in text)
+            {
+                if ('A' <= ch && ch<= 'Z')
+                {
+                    if(dict.ContainsKey(ch))
+                            dict[ch]++;
+                    else
+                    {
+                        dict[ch] = 1;
+                    }
+                    
+                }
 
+            }
+                foreach(var item in dict)
+            {
+                Console.WriteLine("[0]:[1]",item.Key,item.Value);
             }
             
 
