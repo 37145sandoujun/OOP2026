@@ -42,9 +42,7 @@ namespace Exercise01
             
 
         }
-        private static void Exercise02()
-        {
-
-        }
+      
+   
     }
 }
