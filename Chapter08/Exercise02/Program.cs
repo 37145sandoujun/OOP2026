@@ -18,12 +18,7 @@
             Console.WriteLine();    //改行
 
             // 8.2.3 (Removeの呼び出し例)
-
-
-
-
-
-
+            Console.WriteLine(abbrs.Remove);
             // すでに削除してあるので、falseが返る
             if (!abbrs.Remove("NPT")) {
                 Console.WriteLine("削除できません");
@@ -33,6 +28,19 @@
             // 8.2.4
             // 新たなGetAllメソッドを追加済みなので、使用してLINQで処理を行う
 
+            var query = abbrs.GetAll().Where(x => x.Key.Length == 3);
+                foreach(var item in query)
+            {
+                Console.WriteLine(item.Key,item.Value);
+            }
+                    
+                  
+
+                 
+                        
+            
+                
+            
 
 
 
