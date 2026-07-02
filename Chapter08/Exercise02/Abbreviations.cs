@@ -33,15 +33,16 @@ public class Abbreviations {
     // 8.2.1
     //Countプロパティを追加
     public int Count => _dict.Count();
+    //_dict
 
 
     // 8.2.2（最終的に式形式で記述すること）
-    public bool Remove(string abb) {
+    public bool Remove(string abb) => _dict.ContainsKey(abb);
 
+        
 
-
-        return true;    //エラー回避のために記述
-    }
+                //エラー回避のために記述
+    
 
     // Dictionary<TKey, TValue>は、
     // IEnumerable<KeyValuePair<TKey, TValue>>を実装しているので

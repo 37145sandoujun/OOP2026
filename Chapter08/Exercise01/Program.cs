@@ -12,7 +12,7 @@ namespace Exercise01
 
             Exercise01(text);
             Console.WriteLine();
-            Exercise02(text);
+            
 
 
             
