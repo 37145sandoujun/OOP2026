@@ -32,12 +32,12 @@
             foreach (var sale in _score)
             {
                 //すでに名前が辞書のキーに登録されているか？
-                if (dict.ContainsKey(sale.Name))
+                if (dict.ContainsKey(sale.Subject))
                     //登録されている場合
-                    dict[sale.Name] += sale.Score;//売上の足しこみ
+                    dict[sale.Subject] += sale.Score;//売上の足しこみ
                 else
                     //未登録の場合
-                    dict[sale.Name] = sale.Score;//新規に売り上げを登録
+                    dict[sale.Subject] = sale.Score;//新規に売り上げを登録
             }
             return dict;
         }
