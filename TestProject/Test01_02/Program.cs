@@ -83,10 +83,10 @@
         //　　　　出力結果【12 14 17 20 31 35 40 48 53 76 87 91 94】
         private static void Exercise03(int[] numbers)
         {
-            var sort = numbers.OrderBy(x => x);
+            var sort = numbers.OrderBy(x => x).ToList();
             foreach (var item in sort)
             {
-                Console.WriteLine(item);
+                Console.Write(item);
             }
 
         }

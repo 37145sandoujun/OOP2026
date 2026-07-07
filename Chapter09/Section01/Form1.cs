@@ -26,8 +26,21 @@ namespace Section01
         {
             DateTime birth = dtpDate2.Value;
             DateTime today = DateTime.Today;
-            tbOut3.Text = (today.Date - birth.Date) + "“úŒo‰ß";
-            tbOut2.Text = (today.Year - birth.Year) + "Î‚Å‚·";
+           
+            tbOut2.Text = (GetAge) + "Î‚Å‚·";
+
+            TimeSpan ts = today.Date - birth.Date;
+            tbOut3.Text = $"¶‚Ü‚ê‚Ä‚©‚ç{ts.Days}“ú‚ß‚Å‚·";
+
+            static int GetAge(DateTime birthday, DateTime targetDay)
+            {
+                var age = targetDay.Year - birthday.Year;
+                if (targetDay < birthday.AddYears(age))
+                {
+                    age--;
+                }
+                return age;
+            }
         }
     }
 }
