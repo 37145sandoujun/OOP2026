@@ -106,11 +106,13 @@
         //　　　　出力結果【5】
         private static void Exercise05(List<string> cities)
         {
-            var query = cities.Where(s => s.Contains('n')).ToList();
-            foreach (var item in query)
-            {
-                Console.WriteLine(item);
-            }
+            var query = cities.Count(s => s.Contains('n'));
+
+            Console.WriteLine(query
+               );
+
+
+
 
 
         }
@@ -135,7 +137,11 @@
         //          Tokyo】
         private static void Exercise07(List<string> cities)
         {
-
+            var query = cities.OrderBy(s => s).ToList();
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
 
         }
 
@@ -151,12 +157,12 @@
         //　　　　  Hong Kong : 9文字】
         private static void Exercise08(List<string> cities)
         {
-            //var select = cities.Where(s => ).ToList();
+            var select = cities.Select(s => s).ToList();
 
-          //  foreach (var item in select)
-           // {
-            //    Console.WriteLine(item.Length);
-           // }
+            foreach (var item in select)
+            {
+                Console.WriteLine(item + ":" + item.Length + "文字");
+            }
 
         }
 
@@ -173,6 +179,18 @@
         private static void Exercise09(List<string> cities)
         {
 
+            //var select = cities.Select(s => s.OrderBy).ToList();
+
+            //foreach (var item in select)
+            //{
+            //    Console.WriteLine(item + ":" + item.Length + "文字");
+            //}
+
+            
+
+
+
+
 
 
         }
@@ -183,7 +201,12 @@
         //          Berlin】
         private static void Exercise10(List<string> cities)
         {
+            var query = cities.Where(t => t.Length == 6);
+            foreach (var item in query)
+            {
 
+                Console.WriteLine(item);
+            }
 
         }
     }
