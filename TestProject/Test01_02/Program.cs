@@ -86,7 +86,7 @@
             var sort = numbers.OrderBy(x => x).ToList();
             foreach (var item in sort)
             {
-                Console.Write(item);
+                Console.Write(item+" ");
             }
 
         }

@@ -27,10 +27,19 @@ namespace Section01
             DateTime birth = dtpDate2.Value;
             DateTime today = DateTime.Today;
            
-            tbOut2.Text = (GetAge) + "Î‚Å‚·";
+            tbOut2.Text = (GetAge(birth,today)) + "Î‚Å‚·";
 
             TimeSpan ts = today.Date - birth.Date;
             tbOut3.Text = $"¶‚Ü‚ê‚Ä‚©‚ç{ts.Days}“ú‚ß‚Å‚·";
+
+
+
+            var date = birth;
+            var culture = new CultureInfo("ja-JP");
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
+
+            var shortDayOfWeek = culture.DateTimeFormat.GetShortestDayName(date.DayOfWeek);
+            tbOut4.Text = $"¶‚Ü‚ê‚½{birth.Month}Œ{birth.Day}“ú‚Í‘æ{NthWeek(birth)}T‚Ì{shortDayOfWeek}—j“ú‚Å‚·";
 
             static int GetAge(DateTime birthday, DateTime targetDay)
             {
@@ -40,6 +49,14 @@ namespace Section01
                     age--;
                 }
                 return age;
+            }
+            static int NthWeek(DateTime date)
+            {
+                var firstDay = new DateTime(date.Year, date.Month, 1);
+                var firstDayOfWeek = (int)(firstDay.DayOfWeek);
+                return (date.Day + firstDayOfWeek - 1) / 7 + 1;
+
+
             }
         }
     }

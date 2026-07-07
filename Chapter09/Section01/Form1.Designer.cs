@@ -38,6 +38,7 @@
             label2 = new Label();
             tbOut3 = new TextBox();
             tbOut2 = new TextBox();
+            tbOut4 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)numDay).BeginInit();
             SuspendLayout();
             // 
@@ -125,12 +126,21 @@
             tbOut2.Size = new Size(100, 23);
             tbOut2.TabIndex = 8;
             // 
+            // tbOut4
+            // 
+            tbOut4.Location = new Point(675, 97);
+            tbOut4.Multiline = true;
+            tbOut4.Name = "tbOut4";
+            tbOut4.Size = new Size(274, 86);
+            tbOut4.TabIndex = 7;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1018, 593);
             Controls.Add(tbOut2);
+            Controls.Add(tbOut4);
             Controls.Add(tbOut3);
             Controls.Add(label2);
             Controls.Add(btBirthCalc);
@@ -159,5 +169,6 @@
         private Label label2;
         private TextBox tbOut3;
         private TextBox tbOut2;
+        private TextBox tbOut4;
     }
 }
