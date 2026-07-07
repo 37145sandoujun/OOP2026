@@ -185,8 +185,14 @@
             //{
             //    Console.WriteLine(item + ":" + item.Length + "文字");
             //}
+            var select = cities.Select(s => s).ToList();
 
-            
+            foreach (var item in select.OrderBy(n=>n.Count()))
+            {
+                Console.WriteLine(item + ":" + item.Length + "文字");
+            }
+
+
 
 
 
