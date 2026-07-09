@@ -39,6 +39,11 @@
             tbOut3 = new TextBox();
             tbOut2 = new TextBox();
             tbOut4 = new TextBox();
+            tbOut5 = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)numDay).BeginInit();
             SuspendLayout();
             // 
@@ -114,16 +119,16 @@
             // 
             // tbOut3
             // 
-            tbOut3.Location = new Point(513, 98);
+            tbOut3.Location = new Point(493, 98);
             tbOut3.Name = "tbOut3";
-            tbOut3.Size = new Size(100, 23);
+            tbOut3.Size = new Size(159, 23);
             tbOut3.TabIndex = 7;
             // 
             // tbOut2
             // 
-            tbOut2.Location = new Point(368, 98);
+            tbOut2.Location = new Point(337, 98);
             tbOut2.Name = "tbOut2";
-            tbOut2.Size = new Size(100, 23);
+            tbOut2.Size = new Size(131, 23);
             tbOut2.TabIndex = 8;
             // 
             // tbOut4
@@ -131,14 +136,63 @@
             tbOut4.Location = new Point(675, 97);
             tbOut4.Multiline = true;
             tbOut4.Name = "tbOut4";
-            tbOut4.Size = new Size(274, 86);
+            tbOut4.Size = new Size(274, 57);
             tbOut4.TabIndex = 7;
+            // 
+            // tbOut5
+            // 
+            tbOut5.Location = new Point(378, 178);
+            tbOut5.Name = "tbOut5";
+            tbOut5.Size = new Size(245, 23);
+            tbOut5.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(407, 81);
+            label3.Name = "label3";
+            label3.Size = new Size(43, 15);
+            label3.TabIndex = 10;
+            label3.Text = "今何歳";
+            label3.Click += label3_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(580, 80);
+            label4.Name = "label4";
+            label4.Size = new Size(43, 15);
+            label4.TabIndex = 11;
+            label4.Text = "何日目";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(882, 77);
+            label5.Name = "label5";
+            label5.Size = new Size(43, 15);
+            label5.TabIndex = 12;
+            label5.Text = "第何週";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(472, 150);
+            label6.Name = "label6";
+            label6.Size = new Size(65, 15);
+            label6.TabIndex = 13;
+            label6.Text = "次の誕生日";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1018, 593);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(tbOut5);
             Controls.Add(tbOut2);
             Controls.Add(tbOut4);
             Controls.Add(tbOut3);
@@ -170,5 +224,10 @@
         private TextBox tbOut3;
         private TextBox tbOut2;
         private TextBox tbOut4;
+        private TextBox tbOut5;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
     }
 }
