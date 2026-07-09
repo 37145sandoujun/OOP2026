@@ -29,6 +29,9 @@
             btStop = new Button();
             lbTimeDisp = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            button1 = new Button();
+            listBox1 = new ListBox();
+            button2 = new Button();
             SuspendLayout();
             // 
             // btStart
@@ -64,12 +67,44 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
+            // button1
+            // 
+            button1.Location = new Point(37, 162);
+            button1.Name = "button1";
+            button1.Size = new Size(163, 44);
+            button1.TabIndex = 2;
+            button1.Text = "リセット";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(430, 40);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(200, 169);
+            listBox1.TabIndex = 3;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(217, 161);
+            button2.Name = "button2";
+            button2.Size = new Size(163, 46);
+            button2.TabIndex = 4;
+            button2.Text = "ラップタイム";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 255);
-            ClientSize = new Size(437, 163);
+            ClientSize = new Size(680, 240);
+            Controls.Add(button2);
+            Controls.Add(listBox1);
+            Controls.Add(button1);
             Controls.Add(lbTimeDisp);
             Controls.Add(btStop);
             Controls.Add(btStart);
@@ -84,5 +119,8 @@
         private Button btStop;
         private Label lbTimeDisp;
         private System.Windows.Forms.Timer timer1;
+        private Button button1;
+        private ListBox listBox1;
+        private Button button2;
     }
 }
