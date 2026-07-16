@@ -205,6 +205,8 @@
             // 
             // dgvRecords
             // 
+            dgvRecords.AllowUserToAddRows = false;
+            dgvRecords.AllowUserToDeleteRows = false;
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRecords.Location = new Point(141, 495);
             dgvRecords.MultiSelect = false;
@@ -295,6 +297,7 @@
             // 
             // btAddRecord
             // 
+            btAddRecord.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btAddRecord.Location = new Point(641, 399);
             btAddRecord.Name = "btAddRecord";
             btAddRecord.Size = new Size(123, 59);
@@ -305,6 +308,7 @@
             // 
             // btDeleteRecord
             // 
+            btDeleteRecord.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btDeleteRecord.Location = new Point(930, 399);
             btDeleteRecord.Name = "btDeleteRecord";
             btDeleteRecord.Size = new Size(123, 59);
@@ -314,6 +318,7 @@
             // 
             // btModifyRecode
             // 
+            btModifyRecode.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btModifyRecode.Location = new Point(787, 399);
             btModifyRecode.Name = "btModifyRecode";
             btModifyRecode.Size = new Size(123, 59);
