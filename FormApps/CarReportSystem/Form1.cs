@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Forms;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem
@@ -28,7 +29,7 @@ namespace CarReportSystem
                 return;
             }
 
-            
+
 
             var carReport = new CarReport
             {
@@ -155,11 +156,44 @@ namespace CarReportSystem
         private void btDeletePicture_Click(object sender, EventArgs e)
         {
             pbPicture.Image = null;
+
+
+
         }
 
         private void btDeleteRecord_Click(object sender, EventArgs e)
         {
-           // listCarreports.RemoveAt();
+            if ((dgvRecords.CurrentRow is null) || (!dgvRecords.CurrentRow.Selected)) return;
+            //選択されているインデックスを習得
+            int index = dgvRecords.CurrentRow.Index;
+
+            // 削除したいインデックスを指定してからリストから削除;
+
+
+
+            listCarreports.RemoveAt(dgvRecords.CurrentRow.Index);
+
+
+        }
+
+        private void btModifyRecode_Click(object sender, EventArgs e)
+        {
+            //カーレポート管理用リストの該当する要素のデータ
+
+
+            dgvRecords.CurrentRow.Cells["Date"].Value = dtpDate.Value;
+            dgvRecords.CurrentRow.Cells["Author"].Value = cbAuthor.Text;
+            dgvRecords.CurrentRow.Cells["Maker"].Value = getRadioButtonMaker();
+            dgvRecords.CurrentRow.Cells["CarName"].Value = cbCarName.Text;
+            dgvRecords.CurrentRow.Cells["Report"].Value = tbReport.Text;
+            dgvRecords.CurrentRow.Cells["Picture"].Value = pbPicture.Image;
+
+            dgvRecords.Refresh();//データグリッドビューの
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

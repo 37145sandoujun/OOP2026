@@ -130,6 +130,7 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // rbImport
             // 
@@ -332,6 +333,7 @@
             btModifyRecode.TabIndex = 9;
             btModifyRecode.Text = "修正";
             btModifyRecode.UseVisualStyleBackColor = false;
+            btModifyRecode.Click += btModifyRecode_Click;
             // 
             // label7
             // 
