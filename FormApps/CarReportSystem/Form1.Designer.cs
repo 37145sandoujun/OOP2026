@@ -270,6 +270,7 @@
             // 
             // btOpenPicture
             // 
+            btOpenPicture.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btOpenPicture.Location = new Point(787, 45);
             btOpenPicture.Name = "btOpenPicture";
             btOpenPicture.Size = new Size(123, 59);
@@ -280,12 +281,14 @@
             // 
             // btDeletePicture
             // 
+            btDeletePicture.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btDeletePicture.Location = new Point(940, 45);
             btDeletePicture.Name = "btDeletePicture";
             btDeletePicture.Size = new Size(113, 63);
             btDeletePicture.TabIndex = 10;
             btDeletePicture.Text = "削除";
             btDeletePicture.UseVisualStyleBackColor = true;
+            btDeletePicture.Click += btDeletePicture_Click;
             // 
             // pbPicture
             // 
@@ -297,34 +300,38 @@
             // 
             // btAddRecord
             // 
+            btAddRecord.BackColor = Color.IndianRed;
             btAddRecord.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btAddRecord.Location = new Point(641, 399);
             btAddRecord.Name = "btAddRecord";
             btAddRecord.Size = new Size(123, 59);
             btAddRecord.TabIndex = 9;
             btAddRecord.Text = "追加";
-            btAddRecord.UseVisualStyleBackColor = true;
+            btAddRecord.UseVisualStyleBackColor = false;
             btAddRecord.Click += btAddRecord_Click;
             // 
             // btDeleteRecord
             // 
+            btDeleteRecord.BackColor = Color.FromArgb(255, 255, 128);
             btDeleteRecord.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btDeleteRecord.Location = new Point(930, 399);
             btDeleteRecord.Name = "btDeleteRecord";
             btDeleteRecord.Size = new Size(123, 59);
             btDeleteRecord.TabIndex = 9;
             btDeleteRecord.Text = "削除";
-            btDeleteRecord.UseVisualStyleBackColor = true;
+            btDeleteRecord.UseVisualStyleBackColor = false;
+            btDeleteRecord.Click += btDeleteRecord_Click;
             // 
             // btModifyRecode
             // 
+            btModifyRecode.BackColor = Color.DarkOrange;
             btModifyRecode.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
             btModifyRecode.Location = new Point(787, 399);
             btModifyRecode.Name = "btModifyRecode";
             btModifyRecode.Size = new Size(123, 59);
             btModifyRecode.TabIndex = 9;
             btModifyRecode.Text = "修正";
-            btModifyRecode.UseVisualStyleBackColor = true;
+            btModifyRecode.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
@@ -413,6 +420,7 @@
             statusStrip1.Location = new Point(0, 714);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(1148, 22);
+            statusStrip1.SizingGrip = false;
             statusStrip1.TabIndex = 14;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -458,7 +466,9 @@
             Controls.Add(label6);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
+            MinimizeBox = false;
             Name = "Form1";
             Text = "X";
             groupBox1.ResumeLayout(false);
