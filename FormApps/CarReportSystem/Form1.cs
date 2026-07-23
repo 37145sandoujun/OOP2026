@@ -11,7 +11,7 @@ namespace CarReportSystem
     {
 
         BindingList<CarReport> listCarreports = new BindingList<CarReport>();
-        
+
         //設定クラスのオブジェクト設定
         Settings settings = new Settings();
 
@@ -249,18 +249,21 @@ namespace CarReportSystem
         //フォームが閉じたら呼ばれるイベントハンドラ
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+
+
+
             using (var writer = XmlWriter.Create("settings.xml"))
             {
                 var serializer = new XmlSerializer(settings.GetType());
-                 serializer.Serialize(writer.Settings);
+               serializer.Serialize(writer,settings);
 
-                    
+
             }
-           
-            
 
-            
-            
+
+
+
+
 
 
         }
