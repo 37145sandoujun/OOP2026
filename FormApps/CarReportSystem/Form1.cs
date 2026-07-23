@@ -1,5 +1,8 @@
 using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem
@@ -8,6 +11,9 @@ namespace CarReportSystem
     {
 
         BindingList<CarReport> listCarreports = new BindingList<CarReport>();
+        
+        //設定クラスのオブジェクト設定
+        Settings settings = new Settings();
 
         public Form1()
         {
@@ -96,7 +102,7 @@ namespace CarReportSystem
             }
         }
 
-        
+
 
         private void SetRadioButtonMaker(MakerGroup TargetMaker)
         {
@@ -172,14 +178,14 @@ namespace CarReportSystem
         }
 
         private void btModifyRecode_Click(object sender, EventArgs e)
-       {
+        {
             if (dgvRecords.SelectedRows.Count == 0)
             {
                 tsslbMassage.Text = "修正するレポートを選択してください";
                 return;
             }
 
-            if(String.IsNullOrWhiteSpace(cbAuthor.Text)
+            if (String.IsNullOrWhiteSpace(cbAuthor.Text)
                 || String.IsNullOrWhiteSpace(cbCarName.Text))
             {
                 tsslbMassage.Text = "記録者、または車名が未入力です";
@@ -215,7 +221,7 @@ namespace CarReportSystem
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e)
         {
-            if ((dgvRecords.CurrentRow?.DataBoundItem        is not CarReport carReport)
+            if ((dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport)
                 || (!dgvRecords.CurrentRow.Selected)) return;
 
             dtpDate.Value = carReport.Date;
@@ -225,7 +231,7 @@ namespace CarReportSystem
             tbReport.Text = carReport.Report;
             pbPicture.Image = carReport.Picture;
 
-            
+
         }
 
         private void 終了ToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -237,8 +243,26 @@ namespace CarReportSystem
         {
             if (cdColor.ShowDialog() == DialogResult.OK)
             {
-                BackColor =cdColor.Color;
+                BackColor = cdColor.Color;
             }
+        }
+        //フォームが閉じたら呼ばれるイベントハンドラ
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            using (var writer = XmlWriter.Create("settings.xml"))
+            {
+                var serializer = new XmlSerializer(settings.GetType());
+                 serializer.Serialize(writer.Settings);
+
+                    
+            }
+           
+            
+
+            
+            
+
+
         }
     }
 }
