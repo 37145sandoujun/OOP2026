@@ -68,6 +68,7 @@
             tsslb = new ToolStripStatusLabel();
             tsslbMassage = new ToolStripStatusLabel();
             ofdPicFileOpen = new OpenFileDialog();
+            cdColor = new ColorDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -216,6 +217,7 @@
             dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(912, 229);
             dgvRecords.TabIndex = 7;
+            dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
             dgvRecords.Click += dgvRecords_Click;
             // 
             // label4
@@ -364,36 +366,38 @@
             // 保存ToolStripMenuItem
             // 
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(175, 22);
+            保存ToolStripMenuItem.Size = new Size(180, 22);
             保存ToolStripMenuItem.Text = "開く...";
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            色設定ToolStripMenuItem.Size = new Size(175, 22);
+            色設定ToolStripMenuItem.Size = new Size(180, 22);
             色設定ToolStripMenuItem.Text = "保存...";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(172, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // 終了ToolStripMenuItem
             // 
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            終了ToolStripMenuItem.Size = new Size(175, 22);
+            終了ToolStripMenuItem.Size = new Size(180, 22);
             終了ToolStripMenuItem.Text = "色設定...";
+            終了ToolStripMenuItem.Click += 色設定ToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(172, 6);
+            toolStripSeparator2.Size = new Size(177, 6);
             // 
             // 終了ToolStripMenuItem1
             // 
             終了ToolStripMenuItem1.Name = "終了ToolStripMenuItem1";
-            終了ToolStripMenuItem1.Size = new Size(175, 22);
+            終了ToolStripMenuItem1.Size = new Size(180, 22);
             終了ToolStripMenuItem1.Text = "終了(&X)         Alt+F4";
+            終了ToolStripMenuItem1.Click += 終了ToolStripMenuItem1_Click;
             // 
             // ヘルプHToolStripMenuItem
             // 
@@ -527,5 +531,6 @@
         private ToolStripStatusLabel tsslb;
         private ToolStripStatusLabel tsslbMassage;
         private OpenFileDialog ofdPicFileOpen;
+        private ColorDialog cdColor;
     }
 }
