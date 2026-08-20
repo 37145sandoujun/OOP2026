@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -244,6 +245,8 @@ namespace CarReportSystem
             if (cdColor.ShowDialog() == DialogResult.OK)
             {
                 BackColor = cdColor.Color;
+                //変更された炉の情報を保存
+                settings.MainFormBackColor = cdColor.Color.ToArgb();
             }
         }
         //フォームが閉じたら呼ばれるイベントハンドラ
@@ -255,7 +258,7 @@ namespace CarReportSystem
             using (var writer = XmlWriter.Create("settings.xml"))
             {
                 var serializer = new XmlSerializer(settings.GetType());
-               serializer.Serialize(writer,settings);
+                serializer.Serialize(writer, settings);
 
 
             }
@@ -266,6 +269,39 @@ namespace CarReportSystem
 
 
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+
+            //ファイルが存在するか？
+
+            if (File.Exists("settings.xml"))
+            {
+                try
+                {
+                    using (var reader = XmlReader.Create("settings.xml"))
+                    {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                       
+                        var settings = serializer.Deserialize(reader) as Settings;
+                        BackColor = Color.FromArgb(settings.MainFormBackColor);
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    tsslbMassage.Text = "設定ファイル読み込みエラー";
+                        MessageBox.Show(ex.Message);//より具体的なエラー
+                }
+            }
+            else
+            {
+                tsslbMassage.Text = "設定ファイルがありません";
+            }
+            
         }
     }
 }

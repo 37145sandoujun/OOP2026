@@ -9,6 +9,6 @@ namespace CarReportSystem
     public class Settings
 
     {
-        private int MainFormBackColor { get; set; }
+        public int MainFormBackColor { get; set; }
     }
 }

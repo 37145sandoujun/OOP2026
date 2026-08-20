@@ -477,6 +477,7 @@
             Name = "Form1";
             Text = "X";
             FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).EndInit();
