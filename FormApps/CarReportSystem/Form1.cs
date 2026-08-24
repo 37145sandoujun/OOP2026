@@ -360,9 +360,18 @@ namespace CarReportSystem
                         listCarreports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvRecords.DataSource = listCarreports;
                     }
+                    //コンボボックスのすべてを消す
+                    cbAuthor.Items.Clear();
+                    cbCarName.Items.Clear();
 
+                    //コンボボックスのりれきを再登録
 
-
+                    foreach(var report in listCarreports)
+                    {
+                        SetCbAuthor(report.Author);
+                        SetCbCarName(report.CarName);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
