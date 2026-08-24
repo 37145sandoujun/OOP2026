@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
+using System.Data.Common;
 using System.Drawing.Text;
 using System.Linq.Expressions;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -282,7 +283,7 @@ namespace CarReportSystem
                     using (var reader = XmlReader.Create("settings.xml"))
                     {
                         var serializer = new XmlSerializer(typeof(Settings));
-                         settings = serializer.Deserialize(reader) as Settings;
+                        settings = serializer.Deserialize(reader) as Settings;
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
 
@@ -306,7 +307,7 @@ namespace CarReportSystem
 
         }
 
-        private void 色設定ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void 保存ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             reportSaveFile();
         }
@@ -321,6 +322,44 @@ namespace CarReportSystem
 #pragma warning disable SYSLIB0011
                     var bf = new BinaryFormatter();
 #pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(
+                     sfdReportFileSave.FileName,
+                     FileMode.Create))
+                    {
+
+
+                        bf.Serialize(fs, listCarreports);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    tsslbMassage.Text = "ファイル書き出しエラー";
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        //ファイルオープン処理
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            reportOpenFile();
+        }
+
+        private void reportOpenFile()
+        {
+            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //バイナリ形式でシリアル化
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(ofdReportFileOpen.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        listCarreports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRecords.DataSource = listCarreports;
+                    }
 
 
 
@@ -331,6 +370,13 @@ namespace CarReportSystem
                     MessageBox.Show(ex.Message);
                 }
             }
+
+        }
+
+
+        private void ofdReportFileOpen_FileOk(object sender, CancelEventArgs e)
+        {
+            
         }
     }
 }

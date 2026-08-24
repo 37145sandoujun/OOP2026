@@ -70,6 +70,7 @@
             ofdPicFileOpen = new OpenFileDialog();
             cdColor = new ColorDialog();
             sfdReportFileSave = new SaveFileDialog();
+            ofdReportFileOpen = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
@@ -368,13 +369,14 @@
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
             保存ToolStripMenuItem.Size = new Size(180, 22);
             保存ToolStripMenuItem.Text = "開く...";
+            保存ToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
             色設定ToolStripMenuItem.Size = new Size(180, 22);
             色設定ToolStripMenuItem.Text = "保存...";
-            色設定ToolStripMenuItem.Click += 色設定ToolStripMenuItem_Click_1;
+            色設定ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click_1;
             // 
             // toolStripSeparator1
             // 
@@ -449,6 +451,11 @@
             // sfdReportFileSave
             // 
             sfdReportFileSave.FileOk += saveFileDialog1_FileOk;
+            // 
+            // ofdReportFileOpen
+            // 
+            ofdReportFileOpen.FileName = "openFileDialog1";
+            ofdReportFileOpen.FileOk += ofdReportFileOpen_FileOk;
             // 
             // Form1
             // 
@@ -540,5 +547,6 @@
         private OpenFileDialog ofdPicFileOpen;
         private ColorDialog cdColor;
         private SaveFileDialog sfdReportFileSave;
+        private OpenFileDialog ofdReportFileOpen;
     }
 }
