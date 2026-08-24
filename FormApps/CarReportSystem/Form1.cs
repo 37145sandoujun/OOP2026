@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
+using System.Drawing.Text;
 using System.Linq.Expressions;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -238,6 +240,7 @@ namespace CarReportSystem
         private void 終了ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+
         }
 
         private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,11 +267,6 @@ namespace CarReportSystem
             }
 
 
-
-
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -284,8 +282,7 @@ namespace CarReportSystem
                     using (var reader = XmlReader.Create("settings.xml"))
                     {
                         var serializer = new XmlSerializer(typeof(Settings));
-                       
-                        var settings = serializer.Deserialize(reader) as Settings;
+                         settings = serializer.Deserialize(reader) as Settings;
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
 
@@ -294,14 +291,46 @@ namespace CarReportSystem
                 catch (Exception ex)
                 {
                     tsslbMassage.Text = "設定ファイル読み込みエラー";
-                        MessageBox.Show(ex.Message);//より具体的なエラー
+                    MessageBox.Show(ex.Message);//より具体的なエラー
                 }
             }
             else
             {
                 tsslbMassage.Text = "設定ファイルがありません";
             }
-            
+
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void 色設定ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            reportSaveFile();
+        }
+
+        private void reportSaveFile()
+        {
+            if (sfdReportFileSave.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    //バイナリ形式でシリアル化
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    tsslbMassage.Text = "ファイル書き出しエラー";
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
