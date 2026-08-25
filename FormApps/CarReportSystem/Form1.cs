@@ -1,10 +1,5 @@
 using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Data.Common;
-using System.Drawing.Text;
-using System.Linq.Expressions;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
