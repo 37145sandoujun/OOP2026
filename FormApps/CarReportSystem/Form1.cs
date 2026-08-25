@@ -53,7 +53,7 @@ namespace CarReportSystem
             dgvRecords.ClearSelection();
             InputItemsAllClear();
 
-
+            InputItemsUpdate();
         }
 
         private MakerGroup getRadioButtonMaker()
@@ -168,12 +168,22 @@ namespace CarReportSystem
             int index = dgvRecords.CurrentRow.Index;
 
             // 削除したいインデックスを指定してからリストから削除;
+            if(dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport)
+            {
+                tsslbMassage.Text = "削除するレポートを選択してください";
+                return;
+            }
 
 
+            listCarreports.Remove(carReport);
 
-            listCarreports.RemoveAt(dgvRecords.CurrentRow.Index);
+            InputItemsUpdate();
+        }
 
-            InputItemsAllClear();
+        private void InputItemsUpdate()
+        {
+            if (dgvRecords.CurrentRow is null || !dgvRecords.CurrentRow.Selected)
+                InputItemsAllClear();
         }
 
         private void btModifyRecode_Click(object sender, EventArgs e)
@@ -190,7 +200,13 @@ namespace CarReportSystem
                 tsslbMassage.Text = "記録者、または車名が未入力です";
                 return;
             }
-            //カーレポート管理用リストの該当する要素のデータ
+
+            if (dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport)
+            {
+                tsslbMassage.Text = "削除するレポートを選択してください";
+                return;
+            }
+            //カーレポート管理用リストの該当する要素のデータを書き換える
 
             listCarreports[dgvRecords.CurrentRow.Index].Date = dtpDate.Value;
             listCarreports[dgvRecords.CurrentRow.Index].Author = cbAuthor.Text;
@@ -278,7 +294,13 @@ namespace CarReportSystem
                     using (var reader = XmlReader.Create("settings.xml"))
                     {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        settings = serializer.Deserialize(reader) as Settings;
+                       
+                        if(serializer.Deserialize(reader)is Settings lodeadSettings)
+                        {
+                            settings = lodeadSettings;
+                        }
+
+
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
 
