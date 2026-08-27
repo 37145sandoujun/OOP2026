@@ -270,55 +270,64 @@ namespace CarReportSystem
 
 
 
-            using (var writer = XmlWriter.Create("settings.xml"))
-            {
-                var serializer = new XmlSerializer(Settings.Instance.GetType());
-                serializer.Serialize(writer, Settings.Instance);
-
-
-            }
-
+            Settings.Instance.Save();
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
-            //ファイルが存在するか？
-
-            if (File.Exists("settings.xml"))
+            try
             {
-                try
-                {
-                    using (var reader = XmlReader.Create("settings.xml"))
-                    {
-                        var serializer = new XmlSerializer(typeof(Settings));
-                       
-                        if(serializer.Deserialize(reader)is Settings lodeadSettings)
-                        {
-                            settings = lodeadSettings;
-                            BackColor = Color.FromArgb(settings.MainFormBackColor);
-                        }
-
-
-                       
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-                    tsslbMassage.Text = "設定ファイル読み込みエラー";
-                    MessageBox.Show(ex.Message);//より具体的なエラー
-                }
+                Settings.Instance.Load();
+                BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
             }
-            else
+            catch (Exception ex)
             {
-                tsslbMassage.Text = "設定ファイルがありません";
+                tsslbMassage.Text = "設定ファイル読み込みエラー";
+                        MessageBox.Show(ex.Message);//より具体的なエラー
             }
 
+
+
+
+
+
+
+
+
+
+
+
+            //    try
+            //    {
+            //        using (var reader = XmlReader.Create("settings.xml"))
+            //        {
+            //            var serializer = new XmlSerializer(typeof(Settings));
+
+            //            if(serializer.Deserialize(reader)is Settings lodeadSettings)
+            //            {
+            //                settings  = lodeadSettings;
+            //                BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
+            //            }
+
+
+
+            //        }
+
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        tsslbMassage.Text = "設定ファイル読み込みエラー";
+            //        MessageBox.Show(ex.Message);//より具体的なエラー
+            //    }
+            //}
+            //else
+            //{
+            //    tsslbMassage.Text = "設定ファイルがありません";
+            //}
         }
+        
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {

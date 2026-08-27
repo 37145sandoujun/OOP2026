@@ -9,7 +9,7 @@ namespace CarReportSystem
 
         private static string FileName = "setting.xml";
         //勇逸のSettingオブジェクト
-        private static Settings _instance;
+        private static Settings _instance=new Settings();
         public int MainFormBackColor { get; set; }
             = SystemColors.Control.ToArgb();
 
@@ -25,7 +25,7 @@ namespace CarReportSystem
         //設定ファイルから読み込み
         public void Load()
         {
-            if (File.Exists(FileName))
+            if (!File.Exists(FileName))
                 return;
 
             using var reader = XmlReader.Create(FileName);
