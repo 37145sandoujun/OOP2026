@@ -269,7 +269,6 @@ namespace CarReportSystem
         {
 
 
-
             Settings.Instance.Save();
 
         }
@@ -288,44 +287,6 @@ namespace CarReportSystem
             }
 
 
-
-
-
-
-
-
-
-
-
-
-            //    try
-            //    {
-            //        using (var reader = XmlReader.Create("settings.xml"))
-            //        {
-            //            var serializer = new XmlSerializer(typeof(Settings));
-
-            //            if(serializer.Deserialize(reader)is Settings lodeadSettings)
-            //            {
-            //                settings  = lodeadSettings;
-            //                BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
-            //            }
-
-
-
-            //        }
-
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        tsslbMassage.Text = "設定ファイル読み込みエラー";
-            //        MessageBox.Show(ex.Message);//より具体的なエラー
-            //    }
-            //}
-            //else
-            //{
-            //    tsslbMassage.Text = "設定ファイルがありません";
-            //}
         }
         
 
