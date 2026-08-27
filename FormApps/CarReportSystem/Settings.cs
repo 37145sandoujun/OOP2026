@@ -21,6 +21,8 @@ namespace CarReportSystem
         //外部からNEWさせない
         private Settings() { }
 
+
+        //設定ファイルから読み込み
         public void Load()
         {
             if (File.Exists(FileName))
@@ -35,6 +37,8 @@ namespace CarReportSystem
             }
         }
 
+
+        //設定ファイルを保存
         public void Save()
         {
             var data = new SettingsData
