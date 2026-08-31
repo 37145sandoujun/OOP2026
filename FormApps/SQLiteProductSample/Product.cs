@@ -16,4 +16,6 @@ public int id { get; set; }
 
     [DisplayName("‰¿Ši")]
     public int Price { get; set; }
+
+   
 }

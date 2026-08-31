@@ -27,6 +27,8 @@ public static class Database
 
         using var connection = GetConenection();
         connection.Open();
+
+        //SQLを実行するためのコマンドオブジェクトを作る
         using var command = connection.CreateCommand();
 
 
