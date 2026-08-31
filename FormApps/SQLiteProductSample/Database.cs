@@ -22,7 +22,7 @@ public static class Database
     }
 
     //DB‚Ì‰Šú‰»ˆ—
-    public static void Intialize()
+    public static void Initialize()
     {
 
         using var connection = GetConenection();
