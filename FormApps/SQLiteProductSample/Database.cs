@@ -35,9 +35,9 @@ public static class Database
         command.CommandText =
             """
             CREATE TABLE IF NOT EXISTS Products(
-            id          INTEGEER PRImARY KEY AUTOINCREMWNT,
+            Id          INTEGER PRIMARY KEY AUTOINCREMENT,
             Name        TEXT NOT NULL,
-            Price       INTEGER NOT NNULL CHECK(Price>=0)
+            Price       INTEGER NOT NULL CHECK(Price>=0)
             );
 
 
