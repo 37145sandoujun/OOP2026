@@ -7,7 +7,7 @@ public class Product
     //è§ïiID
 
     [DisplayName("ID")]
-public int id { get; set; }
+public int Id { get; set; }
     //è§ïiñº
 
     [DisplayName("è§ïiñº")]
