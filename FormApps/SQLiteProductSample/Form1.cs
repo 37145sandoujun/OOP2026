@@ -22,7 +22,7 @@ public partial class Form1 : Form
 
     private void btAdd_Click(object sender, EventArgs e)
     {
-        tsslMessage.Text = $"DB:{FilePath}";
+        tsslMessage.Text = $"DB:{Database.FilePath}";
     }
 
     private void btUpdate_Click(object sender, EventArgs e)
