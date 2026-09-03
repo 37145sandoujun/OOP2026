@@ -113,4 +113,21 @@ public class ProductRepository
 
         
     }
+
+    public void Delete(int id)
+    {
+        using var connection = Database.GetConenection();
+        connection.Open();
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            DELETE FROM Products
+            WHERE Id = $id;
+
+            """;
+
+        command.Parameters.AddWithValue("$id", id);
+        command.ExecuteNonQuery();
+    }
 }
