@@ -7,7 +7,7 @@ namespace CarReportSystem
 
     {
 
-        private static string FileName = "setting.xml";
+        private const string FileName = "setting.xml";
         //勇逸のSettingオブジェクト
         private static readonly Settings _instance=new Settings();
         public int MainFormBackColor { get; set; }
@@ -54,4 +54,6 @@ namespace CarReportSystem
     {
         public int MainFormBackColor { get; set; }
     }
+
+    /*****************************/
 }

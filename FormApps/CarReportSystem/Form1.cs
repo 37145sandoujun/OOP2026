@@ -89,7 +89,7 @@ namespace CarReportSystem
             tbReport.Text = string.Empty;
             pbPicture.Image = null;
 
-            dgvRecords.CurrentRow.Selected = false;
+            
             dgvRecords.ClearSelection();
         }
 
@@ -163,12 +163,12 @@ namespace CarReportSystem
 
         private void btDeleteRecord_Click(object sender, EventArgs e)
         {
-            if ((dgvRecords.CurrentRow is null) || (!dgvRecords.CurrentRow.Selected)) return;
+            if ((dgvRecords.CurrentRow?. DataBoundItem is not CarReport carReport) || (!dgvRecords.CurrentRow.Selected)) return;
             //選択されているインデックスを習得
             int index = dgvRecords.CurrentRow.Index;
 
             // 削除したいインデックスを指定してからリストから削除;
-            if(dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport)
+            if(dgvRecords.CurrentRow?.DataBoundItem is not CarReport carReport1)
             {
                 tsslbMassage.Text = "削除するレポートを選択してください";
                 return;
