@@ -9,7 +9,7 @@ namespace CarReportSystem
 
         private static string FileName = "setting.xml";
         //勇逸のSettingオブジェクト
-        private static Settings _instance=new Settings();
+        private static readonly Settings _instance=new Settings();
         public int MainFormBackColor { get; set; }
             = SystemColors.Control.ToArgb();
 
@@ -33,7 +33,7 @@ namespace CarReportSystem
 
             if(serializer.Deserialize(reader)is SettingsData data)
             {
-                MainFormBackColor = data.MainForBackColor;
+                MainFormBackColor = data.MainFormBackColor;
             }
         }
 
@@ -43,7 +43,7 @@ namespace CarReportSystem
         {
             var data = new SettingsData
             {
-                MainForBackColor = MainFormBackColor
+                MainFormBackColor = MainFormBackColor
             };
             using var writer = XmlWriter.Create(FileName);
             var serializer = new XmlSerializer(typeof(SettingsData));
@@ -52,6 +52,6 @@ namespace CarReportSystem
     }
     public class SettingsData
     {
-        public int MainForBackColor { get; set; }
+        public int MainFormBackColor { get; set; }
     }
 }
