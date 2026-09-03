@@ -104,11 +104,12 @@ public class ProductRepository
         command.Parameters.AddWithValue("$name",product.Name);
         command.Parameters.AddWithValue("$price", product.Price);
         command.Parameters.AddWithValue("$id", product.Id);
+        command.ExecuteNonQuery();
 
         var reselt = command.ExecuteScalar();
 
         //XVŒ”‚ª‚O‚È‚ç‘ÎÛ‚ª‘¶İ‚µ‚È‚¢
-        if (reselt is null)
+        if (reselt is not  null)
             throw new InvalidOperationException("C³‘ÎÛ‚Ì¤•i‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½");
 
         
