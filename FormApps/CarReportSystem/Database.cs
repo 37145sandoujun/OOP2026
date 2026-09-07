@@ -1,0 +1,60 @@
+using Microsoft.Data.Sqlite;
+
+namespace SQLiteProductSample;
+
+public static class Database
+{
+    //DBファイルの保管場所
+    private static readonly string DatabasePath =
+          Path.Combine(AppContext.BaseDirectory, "carreport.db");
+
+    //SQLiteへ接続するための文字列
+    private static readonly string ConnectionString =
+        $"Data Source={DatabasePath}";
+
+    //DBファイルの保存馬食を外部から確認するための読み取りプロパティ
+    public static string FilePath => DatabasePath;
+
+    //新しいSQLiteConnectionを生成して返す
+    public static SqliteConnection GetConenection()
+    {
+        return new SqliteConnection(ConnectionString);
+    }
+
+    //DBの初期化処理
+    public static void Initialize()
+    {
+
+        using var connection = GetConenection();
+        connection.Open();
+
+        //SQLを実行するためのコマンドオブジェクトを作る
+        using var command = connection.CreateCommand();
+
+
+        //ProdactsテーブルをつくるSQL
+        //IF NOT EXISTS により、すでにテーブルがあってもエラーにならない
+        command.CommandText =
+            """
+            CREATE TABLE IF NOT EXISTS CarReports(
+            Id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            Date        TEXT NOT NULL,
+            Author      TEXT NOT NULL,
+            Maker       INTEGER  NOT NULL,
+            CarName     TEXT NOT NULL,
+            Report      TEXT NOT NULL,
+            Picture BLOB
+            );
+            
+
+
+
+            """;
+
+        //結果行を返さないSQLを実行する
+        command.ExecuteNonQuery(); 
+
+    }
+}
+
+

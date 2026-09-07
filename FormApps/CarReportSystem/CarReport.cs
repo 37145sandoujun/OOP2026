@@ -1,4 +1,6 @@
-﻿namespace CarReportSystem
+﻿using Microsoft.Data.Sqlite;
+
+namespace CarReportSystem
 {
     [Serializable]
     public class CarReport
@@ -14,6 +16,12 @@
             外車,
             その他,
         }
+
+
+
+        
+        [System.ComponentModel.DisplayName("Id")]
+        public int Id { get; set; }//日付
 
         [System.ComponentModel.DisplayName("日付")]
         public DateTime Date { get; set; }//日付
@@ -31,4 +39,9 @@ public string Author { get; set; } = string.Empty;//記録者
         [System.ComponentModel.DisplayName("画像")]
         public Image? Picture { get; set; }//画像
     }
+
+  
+
+
+
 }
