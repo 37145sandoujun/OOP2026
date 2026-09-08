@@ -1,3 +1,4 @@
+using SQLiteProductSample;
 using System.ComponentModel;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
@@ -10,9 +11,10 @@ namespace CarReportSystem
     {
 
         BindingList<CarReport> listCarreports = new BindingList<CarReport>();
-
+        private readonly BindingList<CarReport> _carreport = new();
+        private readonly CarReportRepository _repository = new();
         //設定クラスのオブジェクトを生成
-       // Settings settings = Settings.Instance;
+        // Settings settings = Settings.Instance;
 
         public Form1()
         {

@@ -1,6 +1,7 @@
 using CarReportSystem;
 using Microsoft.Data.Sqlite;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.Xml.Linq;
@@ -15,7 +16,7 @@ public class CarReportRepository
 {
     public List<CarReport> GetAll()
     {
-
+        //全レポートを取得する
         var carReports = new List<CarReport>();
 
         using var connection = Database.GetConenection();
@@ -30,8 +31,8 @@ public class CarReportRepository
         //IF NOT EXISTS により、すでにテーブルがあってもエラーにならない
         command.CommandText =
             """
-            SELECT Id, Name,Price
-            FROM Products
+            SELECT Id, Date, Author, Maker, CarName, Report, Picture
+            FROM CarReports
             ORDER BY Id;
 
 
@@ -54,7 +55,8 @@ public class CarReportRepository
                 Maker = (CarReport.MakerGroup)reader.GetInt32(0),
                 CarName = reader.GetString(4),
                 Report = reader.GetString(5),
-              //  Picture = Image.
+               Picture = reader.IsDBNull(6)
+                    ?null:BytesToImage(reader.GetFieldValue<byte[]>(6))
             });
 
 
@@ -62,7 +64,7 @@ public class CarReportRepository
         return carReports;
     }
 
- public int Add(string name, int price)
+ public int Add(int date ,int author ,int maker ,string carName, int report, Image picture)
     {
         using var connection = Database.GetConenection();
 
@@ -75,17 +77,21 @@ public class CarReportRepository
       
         command.CommandText =
             """
-            INSERT INTO Products(Name,Price)
-            VALUES ($name,$price);
+            INSERT INTO CarReports(Date,Author, Maker, CarName, Report, Picture)
+            VALUES ($date,$author, $maker,$carName,$report,$picture);
 
             SELECT last_insert_rowid();
             """;
 
-        command.Parameters.AddWithValue("$name", name);
-        command.Parameters.AddWithValue("$price", price);
+        command.Parameters.AddWithValue("$date",date);
+        command.Parameters.AddWithValue("$author", author);
+        command.Parameters.AddWithValue("$maker", maker);
+        command.Parameters.AddWithValue("$carName", carName);
+        command.Parameters.AddWithValue("$report", report);
+        command.Parameters.AddWithValue("$picture", picture);
 
-       
-      var reselt =  command.ExecuteScalar();
+
+        var reselt =  command.ExecuteScalar();
 
 
         if (reselt is null)
@@ -94,7 +100,7 @@ public class CarReportRepository
         //SQLiteのINTEGERはlongとして帰るため、intへ変換する
         return Convert.ToInt32((long)reselt);
     }
-    public void Update(Product product)
+    public void Update(CarReport carReport)
     {
         using var connection = Database.GetConenection();
 
@@ -107,15 +113,18 @@ public class CarReportRepository
        
         command.CommandText =
             """
-            UPDATE Products
-            SET Name = $name,
-                Price = $price
+            UPDATE CarReports
+            SET Date = $date, Author = $author, Maker = 
+            $maker, CarName = $carname, Report = $report, Picture = $picture
             WHERE Id = $id;
             """;
 
-        command.Parameters.AddWithValue("$name",product.Name);
-        command.Parameters.AddWithValue("$price", product.Price);
-        command.Parameters.AddWithValue("$id", product.Id);
+        command.Parameters.AddWithValue("$date",carReport.Date);
+        command.Parameters.AddWithValue("$autohr", carReport.Author);
+        command.Parameters.AddWithValue("$maker", carReport.Maker);
+        command.Parameters.AddWithValue("$carname", carReport.CarName);
+        command.Parameters.AddWithValue("$report", carReport.Report);
+        command.Parameters.AddWithValue("$picture", carReport.Picture);
         command.ExecuteNonQuery();
 
         var reselt = command.ExecuteScalar();
@@ -135,7 +144,7 @@ public class CarReportRepository
         using var command = connection.CreateCommand();
         command.CommandText =
             """
-            DELETE FROM Products
+            DELETE FROM CarReports
             WHERE Id = $id;
 
             """;
