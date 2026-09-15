@@ -219,6 +219,7 @@
             dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(912, 229);
             dgvRecords.TabIndex = 7;
+            dgvRecords.CellContentClick += dgvRecords_CellContentClick;
             dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
             // 
             // label4
@@ -367,38 +368,38 @@
             // 保存ToolStripMenuItem
             // 
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(180, 22);
+            保存ToolStripMenuItem.Size = new Size(175, 22);
             保存ToolStripMenuItem.Text = "開く...";
             保存ToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            色設定ToolStripMenuItem.Size = new Size(180, 22);
+            色設定ToolStripMenuItem.Size = new Size(175, 22);
             色設定ToolStripMenuItem.Text = "保存...";
             色設定ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click_1;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(172, 6);
             // 
             // 終了ToolStripMenuItem
             // 
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            終了ToolStripMenuItem.Size = new Size(180, 22);
+            終了ToolStripMenuItem.Size = new Size(175, 22);
             終了ToolStripMenuItem.Text = "色設定...";
             終了ToolStripMenuItem.Click += 色設定ToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(172, 6);
             // 
             // 終了ToolStripMenuItem1
             // 
             終了ToolStripMenuItem1.Name = "終了ToolStripMenuItem1";
-            終了ToolStripMenuItem1.Size = new Size(180, 22);
+            終了ToolStripMenuItem1.Size = new Size(175, 22);
             終了ToolStripMenuItem1.Text = "終了(&X)         Alt+F4";
             終了ToolStripMenuItem1.Click += 終了ToolStripMenuItem1_Click;
             // 

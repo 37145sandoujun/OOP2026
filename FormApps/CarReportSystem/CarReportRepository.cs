@@ -49,7 +49,8 @@ public class CarReportRepository
                 Date = DateTime.ParseExact(
                    reader.GetString(1),
                    "yyyy-MM-dd",
-                   CultureInfo.InvariantCulture),
+                   CultureInfo.InvariantCulture
+                   ),
 
                 Author = reader.GetString(2),
                 Maker = (CarReport.MakerGroup)reader.GetInt32(0),
@@ -64,7 +65,7 @@ public class CarReportRepository
         return carReports;
     }
 
- public int Add(int date ,int author ,int maker ,string carName, int report, Image picture)
+    public int Add(CarReport carReport)
     {
         using var connection = Database.GetConenection();
 
@@ -74,25 +75,20 @@ public class CarReportRepository
         using var command = connection.CreateCommand();
 
 
-      
+
         command.CommandText =
             """
             INSERT INTO CarReports(Date,Author, Maker, CarName, Report, Picture)
-            VALUES ($date,$author, $maker,$carName,$report,$picture);
+            VALUES ($date,$author, $maker,$carname,$report,$picture);
 
             SELECT last_insert_rowid();
             """;
 
-        command.Parameters.AddWithValue("$date",date);
-        command.Parameters.AddWithValue("$author", author);
-        command.Parameters.AddWithValue("$maker", maker);
-        command.Parameters.AddWithValue("$carName", carName);
-        command.Parameters.AddWithValue("$report", report);
-        command.Parameters.AddWithValue("$picture", picture);
 
+        SetCommandParameters(carReport, command);
 
-        var reselt =  command.ExecuteScalar();
-
+        var reselt = command.ExecuteScalar();
+        
 
         if (reselt is null)
             throw new InvalidOperationException("ìoò^ÇµÇΩè§ïiÇÃIDÇéÊìæÇ≈Ç´Ç‹ÇπÇÒÇ≈ÇµÇΩ");
@@ -100,6 +96,30 @@ public class CarReportRepository
         //SQLiteÇÃINTEGERÇÕlongÇ∆ÇµÇƒãAÇÈÇΩÇﬂÅAintÇ÷ïœä∑Ç∑ÇÈ
         return Convert.ToInt32((long)reselt);
     }
+
+   public static void SetCommandParameters(CarReport report,SqliteCommand command)
+    {
+        command.Parameters.AddWithValue("$date", report.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+        command.Parameters.AddWithValue("$author", report.Author);
+        command.Parameters.AddWithValue("$maker", report.Maker);
+        command.Parameters.AddWithValue("$carname", report.CarName);
+        command.Parameters.AddWithValue("$report", report.Report);
+        
+        // command.Parameters.AddWithValue("$picture", carReport.Picture);
+        byte[]? pictureData = ImageToBytes(report.Picture);
+        var pictureParameter = command.Parameters.Add("$picture", SqliteType.Blob);
+        if (pictureData is not null)
+        {
+            pictureParameter.Value = pictureData;
+        }
+        else
+        {
+            pictureParameter.Value = DBNull.Value;
+        }
+       
+
+    }
+
     public void Update(CarReport carReport)
     {
         using var connection = Database.GetConenection();
@@ -119,15 +139,18 @@ public class CarReportRepository
             WHERE Id = $id;
             """;
 
-        command.Parameters.AddWithValue("$date",carReport.Date);
-        command.Parameters.AddWithValue("$autohr", carReport.Author);
-        command.Parameters.AddWithValue("$maker", carReport.Maker);
-        command.Parameters.AddWithValue("$carname", carReport.CarName);
-        command.Parameters.AddWithValue("$report", carReport.Report);
-        command.Parameters.AddWithValue("$picture", carReport.Picture);
-        command.ExecuteNonQuery();
-
-        var reselt = command.ExecuteScalar();
+        SetCommandParameters(carReport, command);
+        byte[]? pictureData = ImageToBytes(carReport.Picture);
+        var pictureParameter = command.Parameters.Add("$picture", SqliteType.Blob);
+        if(pictureData is not null)
+        {
+            pictureParameter.Value = pictureData;
+        }
+        else
+        {
+            pictureParameter.Value = DBNull.Value;
+        }
+            var reselt = command.ExecuteScalar();
 
         //çXêVåèêîÇ™ÇOÇ»ÇÁëŒè€Ç™ë∂ç›ÇµÇ»Ç¢
         if (reselt is not  null)
