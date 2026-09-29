@@ -359,15 +359,12 @@ namespace CarReportSystem
             {
                 try
                 {
-                    //バイナリ形式でシリアル化
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
-                    using (FileStream fs = File.Open(ofdReportFileOpen.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        _carreports = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvRecords.DataSource = _carreports;
-                    }
+                   
+                    //using (FileStream fs = File.Open(ofdReportFileOpen.FileName, FileMode.Open, FileAccess.Read))
+                    //{
+                    //    _carreports = (BindingList<CarReport>)bf.Deserialize(fs);
+                    //    dgvRecords.DataSource = _carreports;
+                    //}
                     //コンボボックスのすべてを消す
                     cbAuthor.Items.Clear();
                     cbCarName.Items.Clear();
@@ -391,10 +388,7 @@ namespace CarReportSystem
         }
 
 
-        private void ofdReportFileOpen_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
+       
         private void ShowError(string title, Exception ex)
         {
             tsslbMassage.Text = title;
@@ -417,9 +411,6 @@ namespace CarReportSystem
             dgvRecords.ClearSelection();
         }
 
-        private void dgvRecords_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
     }
 }

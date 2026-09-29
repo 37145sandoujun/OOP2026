@@ -219,7 +219,7 @@
             dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(912, 229);
             dgvRecords.TabIndex = 7;
-            dgvRecords.CellContentClick += dgvRecords_CellContentClick;
+           
             dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
             // 
             // label4
@@ -456,7 +456,7 @@
             // ofdReportFileOpen
             // 
             ofdReportFileOpen.FileName = "openFileDialog1";
-            ofdReportFileOpen.FileOk += ofdReportFileOpen_FileOk;
+            
             // 
             // Form1
             // 
