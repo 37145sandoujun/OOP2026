@@ -327,18 +327,14 @@ namespace CarReportSystem
                 try
                 {
                     //バイナリ形式でシリアル化
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
+
                     using (FileStream fs = File.Open(
-                     sfdReportFileSave.FileName,
-                     FileMode.Create))
+                       sfdReportFileSave.FileName,
+                       FileMode.Create
+                       ))
                     {
-
-
-                        bf.Serialize(fs, _carreports);
                     }
-
+                
                 }
                 catch (Exception ex)
                 {
