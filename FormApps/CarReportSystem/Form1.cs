@@ -307,17 +307,25 @@ namespace CarReportSystem
                 try
                 {
                     //バイナリ形式でシリアル化
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
+                    //#pragma warning disable SYSLIB0011
+                    //                    var bf = new BinaryFormatter();
+                    //#pragma warning restore SYSLIB0011
+                    //                    using (FileStream fs = File.Open(
+                    //                     sfdReportFileSave.FileName,
+                    //                     FileMode.Create))
+                    //                    {
+
+
+                    //                        bf.Serialize(fs, listCarreports);
+                    //                    }
+                    //バイナリ形式でシリアル化
                     using (FileStream fs = File.Open(
-                     sfdReportFileSave.FileName,
-                     FileMode.Create))
+                        sfdReportFileSave.FileName,
+                        FileMode.Create
+                        ))
                     {
-
-
-                        bf.Serialize(fs, listCarreports);
                     }
+                
 
                 }
                 catch (Exception ex)
@@ -339,13 +347,23 @@ namespace CarReportSystem
             {
                 try
                 {
+
                     //バイナリ形式でシリアル化
-#pragma warning disable SYSLIB0011
-                    var bf = new BinaryFormatter();
-#pragma warning restore SYSLIB0011
-                    using (FileStream fs = File.Open(ofdReportFileOpen.FileName, FileMode.Open, FileAccess.Read))
+                    //#pragma warning disable SYSLIB0011
+                    //                                        var bf = new BinaryFormatter();
+                    //#pragma warning restore SYSLIB0011
+                    //                    using (FileStream fs = File.Open(ofdReportFileOpen.FileName, FileMode.Open, FileAccess.Read))
+                    //                    {
+                    //                        listCarreports = (BindingList<CarReport>)bf.Deserialize(fs);
+                    //                        dgvRecords.DataSource = listCarreports;
+                    //                    }
+                    //バイナリ形式でシリアル化
+                    using (FileStream fs = File.Open(
+                       ofdReportFileOpen.FileName, //ファイル名
+                       FileMode.Open, //ファイルモード
+                       FileAccess.Read //アクセス
+                       ))
                     {
-                        listCarreports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvRecords.DataSource = listCarreports;
                     }
                     //コンボボックスのすべてを消す

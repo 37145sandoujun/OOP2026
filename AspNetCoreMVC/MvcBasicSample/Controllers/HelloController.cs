@@ -24,6 +24,7 @@ public class HelloController:Controller
             Name = "紅茶",
             Price = 450
         }
+             
         };
         //Viewを使用せずHTTPとして応答する
         //return Content("はじめてのASP.NEET Core");
