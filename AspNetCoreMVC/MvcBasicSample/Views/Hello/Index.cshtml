@@ -10,14 +10,18 @@
     string name = "</b>";
 
     int a = 0;
-    string productName = "ノート";
-    int price = 250;
+    string productName1 = "ノート";
+    int price1 = 250;
+    string productName2 = "ペン";
+    int price2 = 150;
+    int total = price1 + price2;
 }
 
 <h1>商品情報</h1>@*画面内の見出し*@
-<p>商品名：　@productName</p>
-<p>価格:　@price　円</p>
-<ul>
+<p>@productName1：@price1 円</p>
+<p>@productName2：@price2 円</p>
+<p>合計金額　@total 円</p>
+@* <ul>
     @foreach(var product in Model)
     {
         <li>@product.Name @product.Price</li>
@@ -26,6 +30,5 @@
     }
   
 
-</ul>
-<p>合計金額　@a　円</p>
+</ul> *@
 
