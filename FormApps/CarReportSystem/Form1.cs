@@ -283,12 +283,12 @@ namespace CarReportSystem
             catch (Exception ex)
             {
                 tsslbMassage.Text = "設定ファイル読み込みエラー";
-                        MessageBox.Show(ex.Message);//より具体的なエラー
+                MessageBox.Show(ex.Message);//より具体的なエラー
             }
 
 
         }
-        
+
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {

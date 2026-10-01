@@ -13,6 +13,8 @@
 }
 
 <h1>商品情報</h1>@*画面内の見出し*@
+<a asp-controller="Hello" asp-action="Index"
+   class="btn btn-primary mb-3">商品一覧を表示</a>
 @*件数が０なら説明だけ表示する*@
 @if(Model.Count == 0)
 {
@@ -21,16 +23,17 @@
 else
 {
     <p>@Model.Count 件の商品があります</p>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            @* 狭い画面では1列で中程度以上の画面では2列にする *@ 
+                <div class="col-12 col-md-6 mb-3">
+                <h2 class="h5">@product.Name</h2>
+                <p>@product.Price 円</p>
+            </div>
+        }
+    </div>
 }
-<ul>
-    @foreach (var product in Model)
-    {
-        <li>@product.Name @product.Price</li>
-        a += product.Price;
-
-    }
 
 
-</ul>
-<p>合計金額　@a　円</p>
 
