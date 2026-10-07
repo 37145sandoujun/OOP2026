@@ -37,7 +37,7 @@ namespace Exercise01
             //    Console.WriteLine(item);
             foreach(var n in numbers.TakeLast(2))
             {
-                Console.WriteLine(strings);
+             //   Console.WriteLine(strings);
             }
 
         }
