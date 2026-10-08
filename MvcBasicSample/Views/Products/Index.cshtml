@@ -30,10 +30,12 @@
                 @if (product.Stock == 0)
                 {
                     <span class="text-danger fw-bold">売り切れ</span>
+                    <span> @product.Description</span>
                 }
                 else
                 {
                     <span>在庫 @product.Stock</span>
+                    <span> @product.Description</span>
                 }
             }
         </ul>
