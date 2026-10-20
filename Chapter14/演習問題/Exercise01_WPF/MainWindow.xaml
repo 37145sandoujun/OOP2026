@@ -7,8 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
         <Button Content="ファイル選択" Click="Button_Click"/>
-        <TextBox x:Name="TextArea" TextWrapping="Wrap" Height="400" TextChanged="TextArea_TextChanged"/>
-    </StackPanel>
+        <TextBox x:Name="TextArea" TextWrapping="Wrap" Height="400" TextChanged="TextArea_TextChanged" VerticalScrollBarVisibility="Auto"/>
+    </Grid>
 </Window>
