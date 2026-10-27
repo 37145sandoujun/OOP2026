@@ -8,13 +8,15 @@ namespace DistanceConverter;
 
     internal class ConverterFactory
     {
-        //あらかじめインスタンスを生成し、配列に入れておく
-        private readonly static ConverterBase[] _converters =
-        {
+    //あらかじめインスタンスを生成し、配列に入れておく
+    private readonly static ConverterBase[] _converters =
+    {
             new MeterConverter (),
             new FeetConverter (),
             new YardConverter (),
             new InchConverter (),
+            new MileConverter (),
+            new KmConverter (),
         };
 
 
