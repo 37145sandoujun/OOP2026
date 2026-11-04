@@ -19,7 +19,7 @@ namespace Exercise03
         }
 
 
-        public void Execute(string line)
+        public bool Execute(string line)
         {
             if(_count < 20)
             {
@@ -27,6 +27,8 @@ namespace Exercise03
                 Console.WriteLine(line);
             }
             _count++;
+
+            return _count < 20;
         }
 
 
@@ -34,7 +36,10 @@ namespace Exercise03
 
 
 
-        public void Terminate() => Console.WriteLine("{0}行");
+        public void Terminate()
+        {
+
+        }
 
 
     }
