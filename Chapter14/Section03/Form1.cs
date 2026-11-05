@@ -12,15 +12,17 @@ namespace Section03
 
         private  async void button1_Click(object sender, EventArgs e)
         {
-           // Thread.Sleep(5000);
-           // MessageBox.Show("Š®—¹");
+            
 
-            //await Task.Delay(5000);
-           // MessageBox.Show("Š®—¹");
+            //Thread.Sleep(5000);
+            //MessageBox.Show("Š®—¹");
 
-           
-            var elapsed = await DoLongTimeWork(5000);
-            MessageBox.Show(elapsed + "ƒ~ƒŠ•b");
+            await Task.Delay(5000);
+             MessageBox.Show("Š®—¹");
+
+
+            //var elapsed = await DoLongTimeWork(5000);
+            //MessageBox.Show(elapsed + "ƒ~ƒŠ•b");
         }
 
         //–ß‚è’l‚È‚µ

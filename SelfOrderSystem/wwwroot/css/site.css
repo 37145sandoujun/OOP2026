@@ -1,22 +1,131 @@
-html {
-  font-size: 14px;
+/* =========================================
+   大日本帝国風テーマ
+========================================= */
+
+:root {
+    --imperial-bg: #f4eddc;
+    --imperial-paper: #ece2c5;
+    --imperial-khaki: #5f634f;
+    --imperial-brown: #3b2d1f;
+    --imperial-gold: #b08d57;
+    --imperial-border: #6b4f2c;
+    --imperial-text: #2b2217;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* 全体 */
 body {
-  margin-bottom: 60px;
+    background-color: var(--imperial-bg);
+    color: var(--imperial-text);
+    font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
 }
+
+/* ナビゲーションバー */
+.navbar {
+    background-color: var(--imperial-khaki) !important;
+    border-bottom: 4px solid var(--imperial-gold);
+}
+
+.navbar-brand,
+.nav-link {
+    color: #fff8dc !important;
+    font-weight: bold;
+}
+
+    .nav-link:hover {
+        color: #ffd700 !important;
+    }
+
+/* カード */
+.card {
+    background-color: var(--imperial-paper);
+    border: 2px solid var(--imperial-border);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 rgba(59, 45, 31, 0.2);
+}
+
+.card-header {
+    background-color: var(--imperial-khaki);
+    color: white;
+    font-weight: bold;
+}
+
+/* テーブル */
+.table {
+    border: 2px solid var(--imperial-border);
+}
+
+    .table thead {
+        background-color: var(--imperial-khaki);
+        color: white;
+    }
+
+    .table td,
+    .table th {
+        border-color: var(--imperial-border);
+    }
+
+/* ボタン */
+.btn-primary {
+    background-color: var(--imperial-khaki);
+    border-color: var(--imperial-border);
+}
+
+    .btn-primary:hover {
+        background-color: var(--imperial-brown);
+        border-color: var(--imperial-brown);
+    }
+
+.btn-success {
+    background-color: #556b2f;
+    border-color: #3f5420;
+}
+
+.btn-danger {
+    background-color: #7a2c2c;
+    border-color: #5d1f1f;
+}
+
+/* 入力欄 */
+.form-control,
+.form-select {
+    border: 2px solid var(--imperial-border);
+    border-radius: 0;
+    background-color: #fffef7;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        box-shadow: 0 0 0 0.2rem rgba(176,141,87,.25);
+        border-color: var(--imperial-gold);
+    }
+
+/* 見出し */
+h1, h2, h3, h4, h5 {
+    color: var(--imperial-brown);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+/* 注文番号など */
+.order-number {
+    color: #8b0000;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* 区切り線 */
+hr {
+    border-top: 2px solid var(--imperial-border);
+}
+
+/* メニュー一覧 */
+.menu-item {
+    border: 2px solid var(--imperial-border);
+    background-color: #fffaf0;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+    .menu-item:hover {
+        background-color: #f0e6c8;
+    }
