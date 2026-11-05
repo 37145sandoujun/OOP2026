@@ -10,6 +10,7 @@
 }
 <h1 class="h3 mb-3">メニュー</h1>
 
+
 <div class="d-flex gap-2 overflow-auto pb-3">
     <a class="btn @(Model.SelectedCategoryId == null ? "btn-dark" : "btn-outline-dark")"
        asp-action="Index">
@@ -46,6 +47,20 @@
                     {
                         <span class="badge text-bg-secondary">売り切れ</span>
                     @**@}
+
+                    @if (!string.IsNullOrWhiteSpace(product.ImagePath))
+                    {
+                        <img src="@Url.Content(product.ImagePath)"
+                             class="so-product-photo"
+                             alt="@product.Name"
+                             loading="lazy" />
+                    }
+                    else
+                    {
+                        <div class="so-product-photo so-product-photo--empty">
+                            写真準備中
+                        </div>
+                    }
 
                     <form asp-controller="Cart" asp-action="Add" method="post">
                         <input type="hidden" name="productId" value="@product.Id" />
