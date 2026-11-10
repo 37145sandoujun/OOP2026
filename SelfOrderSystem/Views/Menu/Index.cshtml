@@ -44,9 +44,9 @@
                     <p class="text-muted flex-grow-1">@product.Description</p>
                     <p class="fs-5 fw-bold">@product.Price.ToString("N0") 円</p>
                    @* @if (product.IsSoldOut)
-                    {
+                    
                         <span class="badge text-bg-secondary">売り切れ</span>
-                    @**@}
+                    @**@
 
                     @if (!string.IsNullOrWhiteSpace(product.ImagePath))
                     {
