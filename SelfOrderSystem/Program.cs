@@ -28,7 +28,7 @@ builder.Services.AddHttpContextAccessor(); // Controller以外のクラスからHttpCont
 builder.Services.AddScoped<CartService>();// CartServiceをDIへ登録しControllerで受け取れるようにする
 
 
-
+builder.Services.AddScoped<IOrderService, OrderService>();//サービス層を作成したことによる追加
 
 
 
