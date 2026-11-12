@@ -1,6 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SelfOrderSystem.Data;
+using SelfOrderSystem.Hubs;
 using SelfOrderSystem.Models;
+
 
 namespace SelfOrderSystem.Services;
 
@@ -8,10 +12,15 @@ public class OrderService : IOrderService
 {
 
     private readonly AppDbContext _db;
+    private readonly IHubContext<StaffOrdersHub> _hubContext; // 通知 
+    private readonly ILogger<OrderService> _logger; // ログ
 
-    public OrderService(AppDbContext db)    // DIからDbContextを受け取る 
+    public OrderService(AppDbContext db  ,IHubContext<StaffOrdersHub> hubContext,
+    ILogger<OrderService> logger)    // DIからDbContextを受け取る 
     {
         _db = db;                           // 受け取ったものを保持 
+        _hubContext = hubContext; // DIでHubを受け取る 
+        _logger = logger; // DIでログを受け取る 
     }
     public async Task<PlaceOrderResult> PlaceAsync(List<CartItem> cartItems, int tableNumber)
     {
@@ -77,7 +86,20 @@ public class OrderService : IOrderService
         _db.Orders.Add(order);             // 注文と明細を保存対象に 
         await _db.SaveChangesAsync();      // SQL Serverの保存完了を待つ 
 
+        
+
         result.PublicId = order.PublicId; // 完了画面で使うID 
+        try
+        {
+            await _hubContext.Clients.All.SendAsync("OrdersChanged");
+
+        }
+        catch (Exception　ex)
+        {
+            _logger.LogWarning(ex, "注文一覧への通知に失敗");
+        }
+
+
         return result;                    // 成功結果を返す 
     }
 } 
