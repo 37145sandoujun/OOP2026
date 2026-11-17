@@ -31,6 +31,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Staff" asp-action="Index">Staff</a>
                         </li>
+
+                        @if(!string.IsNullOrEmpty(Context.Session.GetString("LasrOrderPublicId")))
+                        {
+                            <a class="nav-link" asp-controller="Orders" asp-action="MyOrder">ご注文状況</a>
+                        }
                     </ul>
                 </div>
             </div>
