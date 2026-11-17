@@ -129,3 +129,10 @@ hr {
     .menu-item:hover {
         background-color: #f0e6c8;
     }
+
+    @media (min-width:992px){
+        so-cart-sidebar{
+            position:sticky;
+            top:90px;
+        }
+    }
