@@ -6,7 +6,13 @@ using SelfOrderSystem.Hubs;
 using SelfOrderSystem.Models;
 using SelfOrderSystem.Services;
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
+
 namespace SelfOrderSystem.Controllers;
+
+[Authorize(Roles ="Staff")]//Staff権限の人のみアクセス可能
 
 public class StaffController : Controller
 {

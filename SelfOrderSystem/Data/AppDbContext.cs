@@ -10,11 +10,12 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Category> Categories => Set<Category>();        // カテゴリ 
-    public DbSet<Product> Products => Set<Product>();            // 商品 
-
+    //データベースの各テーブルをC＃から問い合わせるためのプロパティ
+    public DbSet<Category> Categories => Set<Category>();         
+    public DbSet<Product> Products => Set<Product>();           
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+    public DbSet<StaffUser> StaffUsers => Set<StaffUser>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -29,5 +30,9 @@ public class AppDbContext : DbContext
             .WithMany()
             .HasForeignKey(i => i.ProductId)
             .OnDelete(DeleteBehavior.Restrict); // 注文履歴を保護 
+
+        modelBuilder.Entity<StaffUser>()
+            .HasIndex(u => u.UserName)
+            .IsUnique();
     }
 }

@@ -91,12 +91,13 @@ public class OrderService : IOrderService
         result.PublicId = order.PublicId; // 完了画面で使うID 
         try
         {
-            await _hubContext.Clients.All.SendAsync("OrdersChanged");
+            await _hubContext.Clients.Group("staff")
+ 　　　　　.SendAsync("OrdersChanged");
 
         }
         catch (Exception　ex)
         {
-            _logger.LogWarning(ex, "注文一覧への通知に失敗");
+            _logger.LogWarning(ex,"注文一覧への通知に失敗");
         }
 
 
